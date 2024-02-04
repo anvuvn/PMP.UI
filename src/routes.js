@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router"
 import Login from "./components/users/login"
-import DefaultLandingPage from "./pages/landing-page"
-import CustomerLandingPage from "./pages/customer-landing-page"
-import OwnerLandingPage from "./pages/owner-landing-page"
-import AdminLandingPage from "./pages/admin-landing-page"
+import DefaultLandingPage from "./pages/public/landing-page"
+import CustomerLandingPage from "./pages/customer/customer-landing-page"
+import OwnerLandingPage from "./pages/owner/owner-landing-page"
+import AdminLandingPage from "./pages/admin/admin-landing-page"
 import Register from "./components/users/register"
 
 const PageRoutes = () => {
