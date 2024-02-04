@@ -7,6 +7,7 @@ import AdminLandingPage from "./pages/admin/admin-landing-page"
 import Register from "./components/users/register"
 import Users from "./pages/admin/users"
 import AdminDashBoard from "./components/dashboard/admin-dashboard"
+import Error403Permission from "./pages/403"
 
 const PageRoutes = () => {
     return <Routes>
@@ -14,7 +15,7 @@ const PageRoutes = () => {
         <Route path="/authenticate" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/admin" element={<AdminLandingPage></AdminLandingPage>}>
-            
+
             <Route path="dashboard" element={<AdminDashBoard></AdminDashBoard>}></Route>
             <Route path="users" element={<Users></Users>}></Route>
         </Route>
@@ -25,6 +26,8 @@ const PageRoutes = () => {
         <Route path="/owner" element={<OwnerLandingPage></OwnerLandingPage>}>
 
         </Route>
+
+        <Route path="/403" element={<Error403Permission></Error403Permission>}></Route>
 
     </Routes>
 }

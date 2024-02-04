@@ -21,5 +21,10 @@ API.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 
+API.interceptors.response.use(
+  response => response,
+  error => {
+    window.location.href = '/403';
+  });
 export default API;
 
