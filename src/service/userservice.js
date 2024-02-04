@@ -1,5 +1,5 @@
 import { ROLES } from "../constant/Roles";
-import { API } from "./base-service"
+import  API  from "./base-service"
 
 export const UserService = {
     getUser: function () {

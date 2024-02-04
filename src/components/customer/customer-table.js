@@ -11,13 +11,13 @@ const CustomerTable = ({ data }) => {
             </tr>
         </thead>
         <tbody>
-            {data.map((d, index) => {
+            {data ? data.map((d, index) => {
                 return <tr>
                     <td>{index}</td>
                     <td>{d.name}</td>
                     <td>{d.createdDate}</td>
                 </tr>
-            })}
+            }) : "No recent customer added"}
         </tbody>
     </Table>
 }
