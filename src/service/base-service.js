@@ -1,9 +1,10 @@
 import axios from "axios";
 
 
- const API = axios.create({
+const API = axios.create({
   baseURL: "http://localhost:8080"
 })
+
 API.interceptors.request.use(function (config) {
   // Do something before request is sent
   config.headers['Authorization'] = `Bearer asdasdasdasd`;

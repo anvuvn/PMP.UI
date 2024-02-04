@@ -1,5 +1,5 @@
 import { ROLES } from "../constant/Roles";
-import  API  from "./base-service"
+import API from "./base-service"
 
 export const UserService = {
     getUser: function () {
@@ -18,6 +18,15 @@ export const UserService = {
         let index = user.roles.findIndex(r => r.name === role)
         return index !== -1;
     },
+    isAdmin: function () {
+        return this.isInRole(ROLES.ADMIN)
+    },
+    isCustomer: function () {
+        return this.isInRole(ROLES.CUSTOMER)
+    },
+    isOwner: function () {
+        return this.isInRole(ROLES.OWNER)
+    },
     isAuthenticated: function () {
         let token = sessionStorage.getItem("access_token");
         return token;
@@ -35,5 +44,10 @@ export const UserService = {
     },
     logout: async function () {
         sessionStorage.removeItem("access_token")
+    },
+    getUserByRole:async function(role){
+        let result = await API.get("/users/roles/" + role)
+        return result.data;
     }
+
 }

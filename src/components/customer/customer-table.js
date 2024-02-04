@@ -12,7 +12,7 @@ const CustomerTable = ({ data }) => {
         </thead>
         <tbody>
             {data ? data.map((d, index) => {
-                return <tr>
+                return <tr key={d.id}>
                     <td>{index}</td>
                     <td>{d.name}</td>
                     <td>{d.createdDate}</td>
