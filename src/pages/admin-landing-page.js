@@ -1,6 +1,8 @@
+import AdminDashBoard from "../components/dashboard/admin-dashboard"
+
 const AdminLandingPage = () => {
     return <>
-        Admin Langing Page
+        <AdminDashBoard></AdminDashBoard>
     </>
 }
 export default AdminLandingPage

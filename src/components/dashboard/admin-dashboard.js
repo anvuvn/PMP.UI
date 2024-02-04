@@ -1,5 +1,8 @@
 const AdminDashBoard = ()=>{
-    return <>Admin Dashboard</>
+    
+    return <>
+    Admin Dashboard
+    </>
 }
 
 export default AdminDashBoard

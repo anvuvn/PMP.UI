@@ -24,8 +24,8 @@ const Header = () => {
 
     return <div className="header">
         <ul>
-            <li><Link to="/posts">Posts</Link></li>
-            <li><Link to="/new-post">New Posts</Link></li>
+            <li><Link to="/my-properties">My Properties</Link></li>
+            <li><Link to="/offer">Offers</Link></li>
         </ul>
 
         {isAuthenticated ? <div className='right-div'>

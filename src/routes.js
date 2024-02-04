@@ -4,11 +4,13 @@ import DefaultLandingPage from "./pages/landing-page"
 import CustomerLandingPage from "./pages/customer-landing-page"
 import OwnerLandingPage from "./pages/owner-landing-page"
 import AdminLandingPage from "./pages/admin-landing-page"
+import Register from "./components/users/register"
 
 const PageRoutes = () => {
     return <Routes>
         <Route path="/" element={<DefaultLandingPage></DefaultLandingPage>}></Route>
         <Route path="/authenticate" element={<Login></Login>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/admin" element={<AdminLandingPage></AdminLandingPage>}>
 
         </Route>
