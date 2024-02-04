@@ -1,10 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './header.scss'
 import { useContext, useEffect, useState } from 'react'
 
 import { UserService } from '../../service/userservice'
 const Header = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [userName, setUserName] = useState({})
     const [isAuthenticated, setIsAuthenticate] = useState()
     const logout = (e) => {
@@ -20,7 +21,7 @@ const Header = () => {
     }
     useEffect(() => {
         reloadStatus()
-    }, [])
+    }, [location])
 
     return <div className="header">
         <ul>
