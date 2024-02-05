@@ -8,12 +8,14 @@ import Register from "./components/users/register"
 import Users from "./pages/admin/users"
 import AdminDashBoard from "./components/dashboard/admin-dashboard"
 import Error403Permission from "./pages/403"
+import MessageList from "./pages/messages/message-list"
 
 const PageRoutes = () => {
     return <Routes>
         <Route path="/" element={<DefaultLandingPage></DefaultLandingPage>}></Route>
         <Route path="/authenticate" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/messages" element={<MessageList></MessageList>}></Route>
         <Route path="/admin" element={<AdminLandingPage></AdminLandingPage>}>
 
             <Route path="dashboard" element={<AdminDashBoard></AdminDashBoard>}></Route>

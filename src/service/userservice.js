@@ -48,6 +48,9 @@ export const UserService = {
     getUserByRole:async function(role){
         let result = await API.get("/users/roles/" + role)
         return result.data;
+    },
+    getMyMessage : async function(){
+
     }
 
 }
