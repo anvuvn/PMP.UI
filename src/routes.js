@@ -11,6 +11,7 @@ import Error403Permission from "./pages/403"
 import MessageList from "./pages/messages/message-list"
 import OwnerDashBoard from "./components/dashboard/owner-dashboard"
 import OwnerProperty from "./pages/owner/ower-properties"
+import AdminProperties from "./pages/admin/admin-properties"
 
 const PageRoutes = () => {
     return <Routes>
@@ -22,6 +23,7 @@ const PageRoutes = () => {
         <Route path="/admin" element={<AdminLandingPage></AdminLandingPage>}>
             <Route path="dashboard" element={<AdminDashBoard></AdminDashBoard>}></Route>
             <Route path="users" element={<Users></Users>}></Route>
+            <Route path="properties" element={<AdminProperties></AdminProperties>}></Route>
         </Route>
 
         <Route path="/customer" element={<CustomerLandingPage></CustomerLandingPage>}>
