@@ -10,7 +10,10 @@ const MessageList = () => {
         })
     }, [])
     return <div className="message-list">
+        
         {messages.length > 0 ?
+        <div>
+            <h1 className="text-center mb-5 mt-5">Message send to: {messages[0].receiverName}</h1>
             <Accordion defaultActiveKey="0">
                 {messages.map((m,index) => {
                     return <Accordion.Item eventKey={index}>
@@ -23,6 +26,8 @@ const MessageList = () => {
                 })}
 
             </Accordion>
+        </div>
+            
             : ""}
 
     </div>

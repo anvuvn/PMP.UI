@@ -43,11 +43,11 @@ const Header = () => {
 
     return <div className="header">
 
-        <ul>
+        {/* <ul>
             <li><Link to="/my-properties">My Properties</Link></li>
             <li><Link to="/offer">Offers</Link></li>
             {role.isAdmin?<li><Link to="/admin">Admin</Link></li>:""}
-        </ul>
+        </ul> */}
 
         {isAuthenticated ? <div className='right-div'>
             <div>Welcome, {userName}</div>
