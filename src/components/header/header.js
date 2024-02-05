@@ -1,10 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './header.scss'
 import { useContext, useEffect, useState } from 'react'
 
 import { UserService } from '../../service/userservice'
 const Header = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [userName, setUserName] = useState({})
     const [isAuthenticated, setIsAuthenticate] = useState()
     const logout = (e) => {
@@ -20,12 +21,12 @@ const Header = () => {
     }
     useEffect(() => {
         reloadStatus()
-    }, [])
+    }, [location])
 
     return <div className="header">
         <ul>
-            <li><Link to="/posts">Posts</Link></li>
-            <li><Link to="/new-post">New Posts</Link></li>
+            <li><Link to="/my-properties">My Properties</Link></li>
+            <li><Link to="/offer">Offers</Link></li>
         </ul>
 
         {isAuthenticated ? <div className='right-div'>
