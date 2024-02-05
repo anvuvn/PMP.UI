@@ -14,9 +14,10 @@ const PropertyTable = ({ data, allowSendMessage, allowApprove }) => {
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>action</th>
+                    <th>Property Name</th>
+                    <th>Created Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
