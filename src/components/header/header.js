@@ -41,30 +41,24 @@ const Header = () => {
     }, [location])
 
 
-    return <div className="header">
-
-        {/* <ul>
-            <li><Link to="/my-properties">My Properties</Link></li>
-            <li><Link to="/offer">Offers</Link></li>
-            {role.isAdmin?<li><Link to="/admin">Admin</Link></li>:""}
-        </ul> */}
-
-        {isAuthenticated ? <div className='right-div'>
-            <div>Welcome, {userName}</div>
-            <div>
-                <Link to="/messages" className="text-dark position-relative">
-                    <i className="fas fa-envelope"></i>
-                    <span className="badge position-absolute top-0 translate-middle rounded-pill bg-danger">{messages.length}</span>
-                </Link>
+    return <div className="">
+        {isAuthenticated ?
+            <div className='header d-flex justify-content-between mx-4'>
+                <div><h2>👋 Welcome, {userName} !</h2></div>
+                <div className={"d-flex"}>
+                    <Link to="/messages" className="text-dark position-relative mx-4">
+                        <i className="material-icons">mail</i>
+                        <span className="badge position-absolute top-0 translate-middle rounded-pill bg-primary">{messages.length}</span>
+                    </Link>
+                    <div className={"mx-2"}>
+                        <a href='#' onClick={(e) => logout(e)} className={"text-danger"}>
+                            <i className={"material-icons"}>logout</i>
+                        </a>
+                    </div>
+                </div>
             </div>
-
-
-            <div><a href='#' onClick={(e) => logout(e)}>Logout</a> </div>
-        </div> :
+            :
             <div className="right-div"><Link to="/authenticate">sign in</Link> </div>}
-
-
-
     </div>
 }
 export default Header
