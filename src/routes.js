@@ -13,6 +13,8 @@ import OwnerOffersList from "./components/dashboard/owner-offersList"
 import OwnerProperty from "./pages/owner/ower-properties"
 import AdminProperties from "./pages/admin/admin-properties"
 import OfferList from "./pages/owner/offerList"
+import AddProperty from "./components/property/add-property"
+import ImagesUpload from "./components/property/image-uploader"
 
 const PageRoutes = () => {
     return <Routes>
@@ -32,7 +34,10 @@ const PageRoutes = () => {
         </Route>
         <Route path="/owner" element={<OwnerLandingPage></OwnerLandingPage>}>
             <Route path="offerslist" element={<OwnerOffersList></OwnerOffersList>}></Route>
-            <Route path="properties" element={<OwnerProperty></OwnerProperty>}></Route>
+            <Route path="properties" element={<OwnerProperty></OwnerProperty>}>
+                <Route path="add-property" element={<AddProperty ></AddProperty>}></Route>
+                <Route path="image-uploader" element={<ImagesUpload ></ImagesUpload>}></Route> 
+            </Route>
             <Route path="offerlist" element={<OfferList></OfferList>}></Route>
         </Route>
 
