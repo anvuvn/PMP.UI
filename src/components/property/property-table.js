@@ -7,15 +7,7 @@ const PropertyTable = ({ data }) => {
             <thead>
                 <tr>
                     <th>#</th>
-<<<<<<< HEAD
-                    <th>Property Name</th>
-                    <th>Created Date</th>
-                    <th>Status</th>
-                    <th>Action</th>
-=======
                     <th>Name</th>
-
->>>>>>> 9d93da529c1534777abaf347e3b48f243b80b578
                 </tr>
             </thead>
             <tbody>

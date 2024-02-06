@@ -34,15 +34,9 @@ const LeftPanel = () => {
     const getOwnerLink = () => {
         return <>
             <li class="nav-item">
-<<<<<<< HEAD
-                <Link class="nav-link text-white " to="/owner/offerslist">
-
-                    <span class="nav-link-text ms-1">Offers List</span>
-=======
                 <Link class="nav-link text-white " to="/owner/offerlist">
 
                     <span class="nav-link-text ms-1">Offer List</span>
->>>>>>> 9d93da529c1534777abaf347e3b48f243b80b578
                 </Link>
             </li>
             <li class="nav-item">
