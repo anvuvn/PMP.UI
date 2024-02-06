@@ -15,13 +15,38 @@ const AdminDashBoard = () => {
         <h1>Admin dashboard</h1>
         <div className="admin-dashboard">
             <div className="dashboard-block col-6">
-                <h5>Recent customer</h5>
-                <CustomerTable data={dashboard.recentCustomers}>
-                </CustomerTable>
+                <div class="card mb-4 ">
+                    <div class="d-flex">
+
+                        <h6 class="mt-3 mb-2 ms-3 ">Recent customer</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="row">
+
+                            <CustomerTable data={dashboard.recentCustomers}>
+                            </CustomerTable>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div className="dashboard-block col-6">
-                <h5>Recent rented Property</h5>
-                <PropertyTable data={dashboard.recentRented}></PropertyTable>
+                <div class="card mb-4 ">
+                    <div class="d-flex">
+
+                        <h6 class="mt-3 mb-2 ms-3 ">Recent rented Property</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="row">
+
+                            <PropertyTable data={dashboard.recentRented}></PropertyTable>
+
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </>
