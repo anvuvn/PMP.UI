@@ -4,7 +4,9 @@ import ImageService from '../../service/image-service';
 
 export const ImagesViewer = () => {
   const [images, setImages] = React.useState([]);
+
   useEffect(() => {
+    console.log('useEffect');
     ImageService.getAllImages()
       .then((response) => {
         setImages(response.data);

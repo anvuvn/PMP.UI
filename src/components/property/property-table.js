@@ -1,26 +1,39 @@
-import { Table } from "react-bootstrap"
+import { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
 
 const PropertyTable = ({ data }) => {
-    return <>
-    
-        <Table striped bordered hover size="sm">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
+  const [properties, setProperties] = useState([]);
+  useEffect(() => {
+    //load data from server
+    setProperties([
+      { id: 1, name: 'Property 1' },
+      { id: 2, name: 'Property 2' },
+    ]);
+  });
 
-                </tr>
-            </thead>
-            <tbody>
-                {data ? data.map((d, index) => {
-                    return <tr key={d.id}>
-                        <td>{index}</td>
-                        <td>{d.name}</td>
-
-                    </tr>
-                }) : "No recent property added"}
-            </tbody>
-        </Table>
+  return (
+    <>
+      <Table striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data
+            ? data.map((d, index) => {
+                return (
+                  <tr key={d.id}>
+                    <td>{index}</td>
+                    <td>{d.name}</td>
+                  </tr>
+                );
+              })
+            : 'No recent property added'}
+        </tbody>
+      </Table>
     </>
-}
-export default PropertyTable
+  );
+};
+export default PropertyTable;
