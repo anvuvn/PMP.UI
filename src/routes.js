@@ -23,6 +23,7 @@ const PageRoutes = () => {
         <Route path="/public/properties"></Route>
         <Route path="/admin" element={<AdminLandingPage></AdminLandingPage>}>
             <Route path="dashboard" element={<AdminDashBoard></AdminDashBoard>}></Route>
+            <Route path="properties" element={<AdminProperties></AdminProperties>}></Route>
             <Route path="users" element={<Users></Users>}></Route>
         </Route>
 
