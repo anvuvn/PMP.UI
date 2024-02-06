@@ -9,9 +9,14 @@ import Users from "./pages/admin/users"
 import AdminDashBoard from "./components/dashboard/admin-dashboard"
 import Error403Permission from "./pages/403"
 import MessageList from "./pages/messages/message-list"
-import OwnerDashBoard from "./components/dashboard/owner-dashboard"
+import OwnerDashBoard from "./components/dashboard/owner-offersList"
 import OwnerProperty from "./pages/owner/ower-properties"
+<<<<<<< HEAD
 import AdminProperties from "./pages/admin/admin-properties"
+import OwnerOffersList from "./components/dashboard/owner-offersList"
+=======
+import OfferList from "./pages/owner/offerList"
+>>>>>>> 9d93da529c1534777abaf347e3b48f243b80b578
 
 const PageRoutes = () => {
     return <Routes>
@@ -23,15 +28,19 @@ const PageRoutes = () => {
         <Route path="/admin" element={<AdminLandingPage></AdminLandingPage>}>
             <Route path="dashboard" element={<AdminDashBoard></AdminDashBoard>}></Route>
             <Route path="users" element={<Users></Users>}></Route>
-            <Route path="properties" element={<AdminProperties></AdminProperties>}></Route>
         </Route>
 
         <Route path="/customer" element={<CustomerLandingPage></CustomerLandingPage>}>
 
         </Route>
         <Route path="/owner" element={<OwnerLandingPage></OwnerLandingPage>}>
-            <Route path="dashboard" element={<OwnerDashBoard></OwnerDashBoard>}></Route>
+<<<<<<< HEAD
+            <Route path="offerslist" element={<OwnerOffersList></OwnerOffersList>}></Route>
+=======
+          {/*   <Route path="dashboard" element={<OwnerDashBoard></OwnerDashBoard>}></Route> */}
+>>>>>>> 9d93da529c1534777abaf347e3b48f243b80b578
             <Route path="properties" element={<OwnerProperty></OwnerProperty>}></Route>
+            <Route path="offerlist" element={<OfferList></OfferList>}></Route>
         </Route>
 
         <Route path="/403" element={<Error403Permission></Error403Permission>}></Route>
