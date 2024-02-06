@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap"
 
-const PropertyTable = ({ data }) => {
+const PropertyTable = ({ data, action }) => {
     return <>
 
         <Table striped bordered hover size="sm">
