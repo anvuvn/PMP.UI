@@ -20,7 +20,7 @@ const MessageList = () => {
                         
                         <Accordion.Header>Sender: {m.senderName} - <span className="time-ago">{moment(m.createdDate).fromNow()}</span></Accordion.Header>
                         <Accordion.Body>
-                            <span className="blockquote">{m.message}</span>
+                            {m.message}
                         </Accordion.Body>
                     </Accordion.Item>
                 })}
