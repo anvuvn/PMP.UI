@@ -6,6 +6,7 @@ const PropertyTable = ({ data, action }) => {
         <Table striped bordered hover size="sm">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Address</th>
                     <th>Type</th>
                     {
