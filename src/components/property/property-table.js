@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap"
 const PropertyTable = ({ data, action }) => {
     return <>
 
-        <Table striped bordered hover size="sm">
+        <Table className="table align-items-center justify-content-center mb-0">
             <thead>
                 <tr>
                     <th>#</th>
