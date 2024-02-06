@@ -9,10 +9,10 @@ const PropertyTable = ({ data }) => {
                     <th>#</th>
                     <th>Address</th>
                     <th>Type</th>
-                    {
-                        typeof action === "function" ?
-                            <th>action</th>
-                            : ""}
+                    {/*{*/}
+                    {/*    typeof action === "function" ?*/}
+                    {/*        <th>action</th>*/}
+                    {/*        : ""}*/}
 
                 </tr>
             </thead>
@@ -22,12 +22,12 @@ const PropertyTable = ({ data }) => {
                         <td>{d.id}</td>
                         <td>{d.address?.line1}</td>
                         <td>{d.propertyType}</td>
-                        {
-                            typeof action === "function" ?
-                                <td>
-                                    {action(d)}
-                                </td>
-                                : ""}
+                        {/*{*/}
+                        {/*    typeof action === "function" ?*/}
+                        {/*        <td>*/}
+                        {/*            {action(d)}*/}
+                        {/*        </td>*/}
+                        {/*        : ""}*/}
 
                     </tr>
                 }) : "No recent property added"}
