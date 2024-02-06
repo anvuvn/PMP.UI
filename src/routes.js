@@ -11,6 +11,7 @@ import Error403Permission from "./pages/403"
 import MessageList from "./pages/messages/message-list"
 import OwnerDashBoard from "./components/dashboard/owner-dashboard"
 import OwnerProperty from "./pages/owner/ower-properties"
+import OfferList from "./pages/owner/offerList"
 
 const PageRoutes = () => {
     return <Routes>
@@ -28,8 +29,9 @@ const PageRoutes = () => {
 
         </Route>
         <Route path="/owner" element={<OwnerLandingPage></OwnerLandingPage>}>
-            <Route path="dashboard" element={<OwnerDashBoard></OwnerDashBoard>}></Route>
+          {/*   <Route path="dashboard" element={<OwnerDashBoard></OwnerDashBoard>}></Route> */}
             <Route path="properties" element={<OwnerProperty></OwnerProperty>}></Route>
+            <Route path="offerlist" element={<OfferList></OfferList>}></Route>
         </Route>
 
         <Route path="/403" element={<Error403Permission></Error403Permission>}></Route>
