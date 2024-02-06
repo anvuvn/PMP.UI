@@ -20,6 +20,10 @@ export const PropertyService = {
         return result.data;
     },
 
+    searchProperty: async function (data) {
+        let result = await API.post(`/properties/filters`, data);
+        return result.data;
+    },
 
 }
 

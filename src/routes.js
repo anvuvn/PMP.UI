@@ -13,6 +13,7 @@ import OwnerOffersList from "./components/dashboard/owner-offersList"
 import OwnerProperty from "./pages/owner/ower-properties"
 import AdminProperties from "./pages/admin/admin-properties"
 import OfferList from "./pages/owner/offerList"
+import Favourite from "./components/favourite/favourite"
 
 const PageRoutes = () => {
     return <Routes>
@@ -20,7 +21,9 @@ const PageRoutes = () => {
         <Route path="/authenticate" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/messages" element={<MessageList></MessageList>}></Route>
-        <Route path="/public/properties"></Route>
+        <Route path="/public">
+            <Route path="favourites" element={<Favourite></Favourite>}></Route>
+        </Route>
         <Route path="/admin" element={<AdminLandingPage></AdminLandingPage>}>
             <Route path="dashboard" element={<AdminDashBoard></AdminDashBoard>}></Route>
             <Route path="properties" element={<AdminProperties></AdminProperties>}></Route>
