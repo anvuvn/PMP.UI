@@ -7,7 +7,7 @@ const OwnerLandingPage = () => {
     const location = useLocation();
     return <>
         {!isOwner ? <Navigate to="403"></Navigate> : ""}
-        {location.pathname === "/owner" ? <Navigate to="/owner/dashboard"></Navigate> : ""}
+        {location.pathname === "/owner" ? <Navigate to="/owner/offerslist"></Navigate> : ""}
         <Outlet></Outlet>
     </>
 }
