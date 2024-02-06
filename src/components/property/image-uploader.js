@@ -1,27 +1,57 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Navigate, useSearchParams } from 'react-router-dom';
 import ImageService from '../../service/image-service';
+import { ImagesViewer } from './image-viewer';
 
-const ImagesUpload = () => {
+const ImagesUpload = (props) => {
   const [files, setFiles] = React.useState(null);
   const [fileUploaded, setFileUploaded] = React.useState(false);
+  const [propertyId, setPropertyId] = React.useState();
+  const [images, setImages] = React.useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const reloadImage = ()=>{
+    let pid = searchParams.get("id");
+    setPropertyId(pid);
+    ImageService.getPropertyImages(pid)
+      .then((response) => {
+        console.log(response.data);
+        setImages(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    
+    reloadImage();
+
+  }, []);
 
   const onFileChange = (event) => {
     setFiles(event.target.files);
   };
-
+ 
   const onUpload = (event) => {
     event.preventDefault();
+
     const formData = new FormData();
 
+    formData.append('property_id', searchParams.get("id"));
     for (const key of Object.keys(files)) {
       formData.append('files', files[key]);
     }
 
     ImageService.uploadImage(formData)
       .then((response) => {
-        console.log(response.data);
+        
+        console.log(response);
         setFileUploaded(true);
+        reloadImage();
+        // navigate to property details page
+        //navigate('/property/' + searchParams.get("id"));
+
       })
       .catch((error) => {
         console.log(error);
@@ -51,6 +81,7 @@ const ImagesUpload = () => {
           </form>
         </div>
       </div>
+      <ImagesViewer images={images}></ImagesViewer>
     </div>
   );
 };

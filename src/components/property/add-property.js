@@ -1,156 +1,150 @@
 import { useState } from 'react';
+import { STATE_LIST } from '../../constant/StatesList';
+import { PROPERTY_TYPES } from '../../constant/PropertyType';
+import { Container, Dropdown, Form, Button } from 'react-bootstrap';
 
-const AddProperty = () => {
+import { PropertyService } from '../../service/property';
+import { useNavigate } from 'react-router';
+
+const AddProperty = (props) => {
   //
-  const [homeType, setHomeType] = useState('');
-  const [propertyType, setPropertyType] = useState('');
-  const [price, setPrice] = useState('');
-  const [line1, setLine1] = useState('');
-  const [line2, setLine2] = useState('');
-  const [city, setCity] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [state, setState] = useState('');
 
-  const statesList = [
-    { code: 'AL', name: 'Alabama' },
-    { code: 'AK', name: 'Alaska' },
-    { code: 'AZ', name: 'Arizona' },
-    { code: 'AR', name: 'Arkansas' },
-    // Add more states as needed
-  ];
+  const [property, setProperty] = useState({});
+  const [address, setAddress] = useState({});
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handlePropertyType = (selectedType) => {
+    setProperty({ ...property, propertyType: selectedType });
+  };
+
+  const handleDropdownSelect = (selectedState) => {
+    setAddress({ ...address, state: selectedState });
+  };
+
+  const submitForm = (e) => {
     e.preventDefault();
-
-    // Do something with the form data, e.g., send it to a server
-
-    // For demonstration purposes, log the data to the console
-    console.log({
-      homeType,
-      propertyType,
-      price,
-      address: {
-        line1,
-        line2,
-        city,
-        postalCode,
-        state,
-      },
+    PropertyService.addProperty(property).then((res) => {
+      navigate('/owner/image-uploader?id=' +res.id );
     });
-
-    // You can reset the form after submission if needed
-    setHomeType('');
-    setPropertyType('');
-    setPrice('');
-    setLine1('');
-    setLine2('');
-    setCity('');
-    setPostalCode('');
-    setState('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Home Type:
-        <input
-          type="text"
-          value={homeType}
-          onChange={(e) => setHomeType(e.target.value)}
-          required
-        />
-      </label>
-      <br />
+    <Container fluid="md">
+      <Form className="sm">
+        <Form.Group className="mb-3" controlId="propertyType">
+          <Form.Label>Property Type</Form.Label>
+          <Dropdown onSelect={handlePropertyType}>
+            <Dropdown.Toggle id="dropdown-basic">
+              {property.propertyType
+                ? property.propertyType
+                : 'Select property type'}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              {PROPERTY_TYPES.map((pType) => (
+                <Dropdown.Item key={pType.type} eventKey={pType.type}>
+                  {pType.name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </Form.Group>
 
-      <label>
-        Property Type:
-        <input
-          type="text"
-          value={propertyType}
-          onChange={(e) => setPropertyType(e.target.value)}
-          required
-        />
-      </label>
-      <br />
+        <Form.Group className="mb-3" controlId="propertyPrice">
+          <Form.Label>Property Price</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter property price"
+            name="propertyPrice"
+            value={property.price}
+            onChange={(e) => {
+              setProperty({ ...property, price: e.target.value });
+            }}
+            required
+          />
+        </Form.Group>
 
-      <label>
-        Price:
-        <input
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-      </label>
+        <Form.Group className="mb-3" controlId="street">
+          <Form.Label>Street Address </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter street address"
+            name="street"
+            value={address.line1}
+            onChange={(e) => {
+              setAddress({ ...address, line1: e.target.value });
+              setProperty({ ...property, address: address });
+            }}
+            required
+          />
+        </Form.Group>
 
-      <br />
+        <Form.Group className="mb-3" controlId="line2">
+          <Form.Label>Street Address Line 2 </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter street address"
+            name="line2"
+            value={address.line2}
+            onChange={(e) => {
+              setAddress({ ...address, line2: e.target.value });
+              setProperty({ ...property, address: address });
+            }}
+            required
+          />
+        </Form.Group>
 
-      <label>
-        Address Line 1:
-        <input
-          type="text"
-          value={line1}
-          onChange={(e) => setLine1(e.target.value)}
-          required
-        />
-      </label>
+        <Form.Group className="mb-3" controlId="city">
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter city"
+            name="city"
+            value={address.city}
+            onChange={(e) => {
+              setAddress({ ...address, city: e.target.value });
+              setProperty({ ...property, address: address });
+            }}
+            required
+          />
+        </Form.Group>
 
-      <br />
+        <Form.Group className="mb-3" controlId="state">
+          <Form.Label>State</Form.Label>
+          <Dropdown onSelect={handleDropdownSelect}>
+            <Dropdown.Toggle id="dropdown-basic">
+              {address.state ? address.state : 'Select State'}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              {STATE_LIST.map((state) => (
+                <Dropdown.Item key={state.code} eventKey={state.name}>
+                  {state.name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </Form.Group>
 
-      <label>
-        Address Line 2:
-        <input
-          type="text"
-          value={line2}
-          onChange={(e) => setLine2(e.target.value)}
-        />
-      </label>
+        <Form.Group className="mb-3" controlId="postalCode">
+          <Form.Label>Postal Code</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter postal code"
+            name="postalCode"
+            value={address.postalCode}
+            onChange={(e) => {
+              setAddress({ ...address, postalCode: e.target.value });
+              setProperty({ ...property, address: address });
+            }}
+            required
+          />
+        </Form.Group>
 
-      <br />
-
-      <label>
-        City:
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          required
-        />
-      </label>
-
-      <br />
-
-      <label>
-        Postal Code:
-        <input
-          type="text"
-          value={postalCode}
-          onChange={(e) => setPostalCode(e.target.value)}
-          required
-        />
-      </label>
-
-      <br />
-
-      <label>
-        State:
-        <select
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-          required
-        >
-          <option value="">Select State</option>
-          {statesList.map((stateData) => (
-            <option key={stateData.code} value={stateData.code}>
-              {stateData.name}
-            </option>
-          ))}
-        </select>
-      </label>
-      <br />
-
-      <button type="submit">Submit</button>
-    </form>
+        <Button variant="primary" onClick={submitForm}>
+          Submit
+        </Button>
+      </Form>
+    </Container>
   );
 };
 
