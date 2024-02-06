@@ -3,6 +3,7 @@ import { AdminService } from "../../service/admin-service";
 import PropertyTable from "../property/property-table";
 import CustomerTable from "../customer/customer-table";
 import './dashboard.scss'
+import Favourite from "../favourite/favourite";
 const AdminDashBoard = () => {
 
     const [dashboard, setDashboard] = useState({});
@@ -45,8 +46,6 @@ const AdminDashBoard = () => {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </>

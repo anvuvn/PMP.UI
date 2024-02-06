@@ -41,7 +41,7 @@ const LeftPanel = () => {
             </li>
             <li class="nav-item">
                 <Link class="nav-link text-white " to="/owner/properties">
-                    <span class="nav-link-text ms-1">Properties</span>
+                    <span class="nav-link-text ms-1">My Properties</span>
                 </Link>
             </li>
         </>

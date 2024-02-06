@@ -9,8 +9,9 @@ import Users from "./pages/admin/users"
 import AdminDashBoard from "./components/dashboard/admin-dashboard"
 import Error403Permission from "./pages/403"
 import MessageList from "./pages/messages/message-list"
-import OwnerDashBoard from "./components/dashboard/owner-dashboard"
+import OwnerOffersList from "./components/dashboard/owner-offersList"
 import OwnerProperty from "./pages/owner/ower-properties"
+import AdminProperties from "./pages/admin/admin-properties"
 import OfferList from "./pages/owner/offerList"
 
 const PageRoutes = () => {
@@ -29,7 +30,7 @@ const PageRoutes = () => {
 
         </Route>
         <Route path="/owner" element={<OwnerLandingPage></OwnerLandingPage>}>
-          {/*   <Route path="dashboard" element={<OwnerDashBoard></OwnerDashBoard>}></Route> */}
+            <Route path="offerslist" element={<OwnerOffersList></OwnerOffersList>}></Route>
             <Route path="properties" element={<OwnerProperty></OwnerProperty>}></Route>
             <Route path="offerlist" element={<OfferList></OfferList>}></Route>
         </Route>
