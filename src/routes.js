@@ -13,7 +13,10 @@ import OwnerDashBoard from "./components/dashboard/owner-offersList"
 import OwnerProperty from "./pages/owner/ower-properties"
 import AdminProperties from "./pages/admin/admin-properties"
 import OwnerOffersList from "./components/dashboard/owner-offersList"
+import OwnerProperty from "./pages/owner/owner-properties"
+import AdminProperties from "./pages/admin/admin-properties"
 import OfferList from "./pages/owner/offerList"
+import Favourite from "./components/favourite/favourite"
 import PropertyList from "./pages/customer/propertyList";
 import OfferForm from "./pages/customer/offerForm";
 
@@ -23,9 +26,12 @@ const PageRoutes = () => {
         <Route path="/authenticate" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/messages" element={<MessageList></MessageList>}></Route>
-        <Route path="/public/properties"></Route>
+        <Route path="/public">
+            <Route path="favourites" element={<Favourite></Favourite>}></Route>
+        </Route>
         <Route path="/admin" element={<AdminLandingPage></AdminLandingPage>}>
             <Route path="dashboard" element={<AdminDashBoard></AdminDashBoard>}></Route>
+            <Route path="properties" element={<AdminProperties></AdminProperties>}></Route>
             <Route path="users" element={<Users></Users>}></Route>
         </Route>
 
@@ -37,7 +43,6 @@ const PageRoutes = () => {
 
         <Route path="/owner" element={<OwnerLandingPage></OwnerLandingPage>}>
             <Route path="offerslist" element={<OwnerOffersList></OwnerOffersList>}></Route>
-          {/*   <Route path="dashboard" element={<OwnerDashBoard></OwnerDashBoard>}></Route> */}
             <Route path="properties" element={<OwnerProperty></OwnerProperty>}></Route>
             <Route path="offerlist" element={<OfferList></OfferList>}></Route>
         </Route>

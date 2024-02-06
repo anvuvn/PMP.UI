@@ -26,8 +26,13 @@ const LeftPanel = () => {
                     <span className="nav-link-text ms-1">Dashboard</span>
                 </Link>
             </li>
-            <li className="nav-item">
-                <Link class="nav-link text-black " to="/admin/users">
+            <li class="nav-item">
+                <Link className="nav-link text-black " to="/admin/properties">
+                    <span className="nav-link-text ms-1">Properties</span>
+                </Link>
+            </li>
+            <li class="nav-item">
+                <Link className="nav-link text-black " to="/admin/users">
                     <span className="nav-link-text ms-1">Users</span>
                 </Link>
             </li>

@@ -24,7 +24,8 @@ API.interceptors.request.use(function (config) {
 API.interceptors.response.use(
   response => response,
   error => {
-    window.location.href = '/403';
+    //window.location.href = '/403';
+    alert("Permission dennied!!")
   });
 export default API;
 
