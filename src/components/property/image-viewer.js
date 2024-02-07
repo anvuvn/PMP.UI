@@ -10,7 +10,7 @@ export const ImagesViewer = (props) => {
 
   return (
     <div>
-      <h2 className="mt-3 text-center mb-5">Images preview</h2>
+      <h2 className="mt-3 text-center mb-5">{props.title}</h2>
       <div className="row justify-content-center">
         { props.images ? 
          props.images.map((image) => (
