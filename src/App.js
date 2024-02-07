@@ -10,10 +10,10 @@ import PropertyFilter from './components/property/property-filter';
 function App() {
   return (
     <div className="App mt-2">
-      <PropertyFilter></PropertyFilter>
+      {/* <PropertyFilter></PropertyFilter> */}
       <BrowserRouter>
         <div className='g-sidenav-show '>
-          {/* <LeftPanel></LeftPanel> */}
+          <LeftPanel></LeftPanel>
           <main className='main-content py-4'>
             <Header className="mb-5"></Header>
             <PageRoutes></PageRoutes>
