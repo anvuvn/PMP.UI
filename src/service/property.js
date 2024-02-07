@@ -28,12 +28,10 @@ export const PropertyService = {
     let result = await API.put(`/properties/${property.id}`, property);
     return result.data;
   },
-
-  getProperties: async function () {
-    let result = await API.get(`/properties`);
+  searchProperty: async function (data) {
+    let result = await API.post(`/properties/filters`, data);
     return result.data;
-  },
-
-};
+}
+}
 
 export default PropertyService;

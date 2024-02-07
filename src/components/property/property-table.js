@@ -1,18 +1,18 @@
 import { Table } from "react-bootstrap"
 
-const PropertyTable = ({ data, action }) => {
+const PropertyTable = ({ data }) => {
     return <>
-
-        <Table className="table align-items-center justify-content-center mb-0">
+    
+        <Table striped bordered hover size="sm">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Address</th>
                     <th>Type</th>
-                    {
-                        typeof action === "function" ?
-                            <th>action</th>
-                            : ""}
+                    {/*{*/}
+                    {/*    typeof action === "function" ?*/}
+                    {/*        <th>action</th>*/}
+                    {/*        : ""}*/}
 
                 </tr>
             </thead>
@@ -22,12 +22,12 @@ const PropertyTable = ({ data, action }) => {
                         <td>{d.id}</td>
                         <td>{d.address?.line1}</td>
                         <td>{d.propertyType}</td>
-                        {
-                            typeof action === "function" ?
-                                <td>
-                                    {action(d)}
-                                </td>
-                                : ""}
+                        {/*{*/}
+                        {/*    typeof action === "function" ?*/}
+                        {/*        <td>*/}
+                        {/*            {action(d)}*/}
+                        {/*        </td>*/}
+                        {/*        : ""}*/}
 
                     </tr>
                 }) : "No recent property added"}
