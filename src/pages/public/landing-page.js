@@ -1,11 +1,11 @@
-import AddProperty from '../../components/property/add-property';
+
+import PropertyGrid from '../../components/property/property-grid';
 
 const DefaultLandingPage = () => {
   return (
-    <>
-      <h1>Landing Page</h1>
+    <> 
+      <PropertyGrid></PropertyGrid>
 
-      <AddProperty></AddProperty>
     </>
   );
 };

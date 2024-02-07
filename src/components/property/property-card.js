@@ -3,42 +3,54 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PropertyCard = (props) => {
+
   const extract_image = () => {
     let property = props.property;
-    return 'data:image/png;base64,' + property.image;
+    return 'data:image/png;base64,' + property.thumbs;
   };
+
+  const numberFormat =(q) => {
+    return q.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0
+    });
+   } 
+
   const extract_subtitle = () => {
     let address = props.property.address;
-    return (
-      address.street +
-      ', ' +
-      address.city +
-      ', ' +
-      address.state +
-      ' ' +
-      address.zip
-    );
-  };
-
-  //   return (
-  //     <img className="card-img-top" src={extract_image()} alt="Card image cap" />
-
-  //   );
+    let result = '';
+    //
+    if(address.line1) 
+      result += address.line1 +', ';
+    if(address.city) 
+      result += address.city+', ';
+    if(address.state) 
+      result += address.state+', ';
+    if(address.postalCode) 
+      result += address.postalCode;
+    //
+    return result;
+  }; 
 
   return (
-    <Card>
-      <Card.Img variant="top" src={extract_image()} />
-      <Card.Body>
-        <Card.Title>{extract_subtitle()}</Card.Title>
-        {/* <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text> */}
+    <Link className="card-link" to={`/properties/${props.property.id}`}>
+    <Card style={{ margin: '2px', paddingLeft: '0px',paddingRight: '0px', }}>
+      <Card.Img variant="top" src={extract_image()} style={{ minHeight:'280px', maxHeight: '280px' }}  />
+      <Card.Body style={{minHeight:'150px'}}>
+        <span className='property-status'></span>
+        <span >{props.property.status}</span>
+        <Card.Title>{ numberFormat(props.property.price)}</Card.Title>      
+        <Card.Text>  
+          {extract_subtitle()}
+        </Card.Text> 
+
       </Card.Body>
     </Card>
+    </Link>
   );
 };
 

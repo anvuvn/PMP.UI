@@ -18,6 +18,10 @@ function PropertyList() {
         navigate(`/properties/${propertyId}/offer`);
     };
 
+    const extract_image = (image) => {
+        return 'data:image/png;base64,' + image;
+    }
+
     return (
         <Container fluid>
             <Row className="justify-content-center">
@@ -26,7 +30,10 @@ function PropertyList() {
                         <div className="card" data-animation="true">
                             <div className="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <a href="#" className="d-block blur-shadow-image">
-                                    {property.images && property.images.length > 0 ? (
+                                
+                                <img className="img-fluid shadow border-radius-lg" alt={"property"} variant="top" src={extract_image(property.thumbs)} />
+
+                                    {/* {property.images && property.images.length > 0 ? (
                                         <Carousel interval={null} prevLabel="" nextLabel="">
                                             {property.images.map((image, index) => (
                                                 <Carousel.Item key={index}>
@@ -36,7 +43,7 @@ function PropertyList() {
                                         </Carousel>
                                     ) : (
                                         <img className="img-fluid shadow border-radius-lg" alt={"property"} variant="top" src="https://placehold.co/600x400" />
-                                    )}
+                                    )} */}
                                 </a>
                             </div>
                             <div className="card-body text-center">

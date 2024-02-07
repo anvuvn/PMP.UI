@@ -36,6 +36,11 @@ const ImagesUpload = (props) => {
   const onUpload = (event) => {
     event.preventDefault();
 
+    if(!files){
+      alert('Please select a file');
+      return;
+    }
+
     const formData = new FormData();
 
     formData.append('property_id', searchParams.get("id"));
@@ -58,31 +63,34 @@ const ImagesUpload = (props) => {
       });
   };
 
-  return (
-    <div className="row">
-      <div className="card col-md-6 offset-md-3 mt-5">
-        <h3 className="text-center">Upload Image</h3>
-        <div className="card-body">
-          <form onSubmit={onUpload}>
-            <div>
-              <label>Select a file:</label>
-              <input
-                className="mx-2"
-                type="file"
-                name="file"
-                onChange={onFileChange}
-                multiple
-              ></input>
-            </div>
-
-            <button className="btn btn-success btn-sm mt-3" type="submit">
-              Upload
-            </button>
-          </form>
+  return (    
+    <>
+      <h2 style={{textAlign:'center'}}>Upload images for property</h2>
+      <h6 style={{fontStyle:'italic', textAlign:'center', color:'red'}}>(uploading new images will override the older ones)</h6>
+      <div className="row">
+        <div className="card col-md-6 offset-md-3 mt-5"> 
+          <div className="card-body">
+            <form onSubmit={onUpload}>
+              <div>
+                <label>Select a file:</label>
+                <input
+                  className="mx-2"
+                  type="file"
+                  name="file"
+                  onChange={onFileChange}
+                  multiple
+                ></input>
+              </div>
+              <button className="btn btn-success btn-sm mt-3" type="submit">
+                Upload
+              </button>
+              {fileUploaded ? <div style={{color:'green'}}>File uploaded successfully</div> : ''}
+            </form>
+          </div>
         </div>
+        <ImagesViewer images={images}></ImagesViewer>
       </div>
-      <ImagesViewer images={images}></ImagesViewer>
-    </div>
+    </>
   );
 };
 
