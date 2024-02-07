@@ -17,6 +17,9 @@ import OfferList from "./pages/owner/offerList"
 import Favourite from "./components/favourite/favourite"
 import PropertyList from "./pages/customer/propertyList";
 import OfferForm from "./pages/customer/offerForm";
+import AddProperty from "./components/property/add-property"
+import ImagesUpload from "./components/property/image-uploader"
+import EditProperty from "./components/property/edit-property"
 
 const PageRoutes = () => {
     return <Routes>
@@ -43,6 +46,9 @@ const PageRoutes = () => {
             <Route path="offerslist" element={<OwnerOffersList></OwnerOffersList>}></Route>
             <Route path="properties" element={<OwnerProperty></OwnerProperty>}></Route>
             <Route path="offerlist" element={<OfferList></OfferList>}></Route>
+            <Route path="add-property" element={<AddProperty></AddProperty>}></Route>
+            <Route path="edit-property" element={<EditProperty></EditProperty>}></Route>
+            <Route path="upload-images" element={<ImagesUpload></ImagesUpload>}></Route>
         </Route>
 
         <Route path="/403" element={<Error403Permission></Error403Permission>}></Route>
