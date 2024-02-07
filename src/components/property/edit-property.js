@@ -9,6 +9,8 @@ import { Navigate, useSearchParams } from 'react-router-dom';
 const EditProperty = ()=>{
 
     const [searchParams, setSearchParams] = useSearchParams();
+    
+    const navigate = useNavigate();
 
     const [property, setProperty] = useState({});
     const [address, setAddress] = useState({});
