@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import { STATE_LIST } from '../../constant/StatesList';
 import { PROPERTY_TYPES } from '../../constant/PropertyType';
 import { Container, Dropdown, Form, Button } from 'react-bootstrap';
 
 import { PropertyService } from '../../service/property';
-import { useNavigate } from 'react-router';
-import { useSearchParams } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 
 const EditProperty = ()=>{
 
@@ -51,9 +50,13 @@ const EditProperty = ()=>{
     e.preventDefault();
     console.log(property);
 
-    PropertyService.updateProperty(property).then((res) => {
+    PropertyService.updateProperty(property)
+      .then((res) => {
       console.log(res);
-
+      setProperty(res);
+    })
+    .catch((error) => {
+      console.log(error);
     });
 
     // PropertyService.addProperty(property).then((res) => {

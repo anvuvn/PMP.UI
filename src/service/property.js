@@ -36,6 +36,10 @@ export const PropertyService = {
     let result = await API.get(`/properties`);
     return result.data;
   },
+  changePropertyStatus: async function (id, status) {
+    let result =  await API.put(`/properties/${id}/status/${status}`);
+    return result.data;
+  }
 }
 
 export default PropertyService;
