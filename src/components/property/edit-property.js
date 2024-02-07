@@ -19,9 +19,19 @@ const EditProperty = ()=>{
         console.log(pid);
         PropertyService.getPropertyById(pid).then((res) => {
             console.log(res);
-            setProperty({
-                
-            });
+            // let address = {
+            //     line1: res.property.address.line1,
+            //     line2: res.property.address.line2,
+            //     city: res.property.address.city,
+
+
+            // };
+
+            // let property = {
+
+            // };
+            setProperty(res);
+            setAddress(res.address);
         });
     }
 
