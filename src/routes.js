@@ -9,10 +9,8 @@ import Users from "./pages/admin/users"
 import AdminDashBoard from "./components/dashboard/admin-dashboard"
 import Error403Permission from "./pages/403"
 import MessageList from "./pages/messages/message-list"
-import OwnerDashBoard from "./components/dashboard/owner-offersList"
 import OwnerProperty from "./pages/owner/owner-properties"
 import AdminProperties from "./pages/admin/admin-properties"
-import OwnerOffersList from "./components/dashboard/owner-offersList"
 import OfferList from "./pages/owner/offerList"
 import Favourite from "./components/favourite/favourite"
 import PropertyList from "./pages/customer/propertyList";
@@ -20,9 +18,6 @@ import OfferForm from "./pages/customer/offerForm";
 import AddProperty from "./components/property/add-property"
 import ImagesUpload from "./components/property/image-uploader"
 import EditProperty from "./components/property/edit-property"
-import AddProperty from "./components/property/add-property"
-import EditProperty from "./components/property/edit-property"
-import ImagesUpload from "./components/property/image-uploader"
 
 const PageRoutes = () => {
     return <Routes>
