@@ -11,7 +11,15 @@ const ImageService = {
   },
   getPropertyImages: function(id){
     return API.get('/images/'+id);
+  },
+  upload3DImage: function (fileFormData) {
+    return API.post('/image3d', fileFormData);
+  },
+  getProperty3DImages: async function (id) {
+    let result = await API.get(`/image3d/${id}`);
+    return result.data;
   }
+  //
 };
 
 export default ImageService;
