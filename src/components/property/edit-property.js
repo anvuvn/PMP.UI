@@ -10,6 +10,8 @@ import { useSearchParams } from 'react-router-dom';
 const EditProperty = ()=>{
 
     const [searchParams, setSearchParams] = useSearchParams();
+    
+    const navigate = useNavigate();
 
     const [property, setProperty] = useState({});
     const [address, setAddress] = useState({});
@@ -53,6 +55,8 @@ const EditProperty = ()=>{
 
     PropertyService.updateProperty(property).then((res) => {
       console.log(res);
+      
+      navigate('/owner/upload-images?id=' + res.id);
 
     });
 
