@@ -50,6 +50,7 @@ const EditProperty = ()=>{
   const submitForm = (e) => {
     e.preventDefault();
     console.log(property);
+
     PropertyService.updateProperty(property).then((res) => {
       console.log(res);
 
@@ -92,6 +93,20 @@ const EditProperty = ()=>{
             value={property.price}
             onChange={(e) => {
               setProperty({ ...property, price: e.target.value });
+            }}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="numberOfRoom">
+          <Form.Label>Number of Room</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter number of rooms"
+            name="numberOfRoom"
+            value={property.numberOfRoom}
+            onChange={(e) => {
+              setProperty({ ...property, numberOfRoom: e.target.value });
             }}
             required
           />

@@ -25,9 +25,9 @@ const AddProperty = (props) => {
   const submitForm = (e) => {
     e.preventDefault();
     PropertyService.addProperty(property).then((res) => {
-//      navigate('/owner/image-uploader?id=' +res.id );
-        navigate('/owner/properties');
-
+      navigate('/owner/edit-property?id=' +res.id );
+      // console.log(res);
+      //navigate('/owner/properties');
     });
   };
 
@@ -67,6 +67,22 @@ const AddProperty = (props) => {
             required
           />
         </Form.Group>
+
+
+        <Form.Group className="mb-3" controlId="numberOfRoom">
+          <Form.Label>Number of Room</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter number of rooms"
+            name="numberOfRoom"
+            value={property.numberOfRoom}
+            onChange={(e) => {
+              setProperty({ ...property, numberOfRoom: e.target.value });
+            }}
+            required
+          />
+        </Form.Group>
+
 
         <Form.Group className="mb-3" controlId="street">
           <Form.Label>Street Address </Form.Label>
