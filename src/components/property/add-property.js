@@ -25,11 +25,13 @@ const AddProperty = (props) => {
   const submitForm = (e) => {
     e.preventDefault();
     PropertyService.addProperty(property).then((res) => {
-      navigate('/owner/image-uploader?id=' +res.id );
+      navigate('/owner/image-uploader?id=' + res.id );
     });
   };
 
   return (
+    <>
+    <h2 style={{textAlign:'center'}}>Create new property</h2>
     <Container fluid="md">
       <Form className="sm">
         <Form.Group className="mb-3" controlId="propertyType">
@@ -144,7 +146,7 @@ const AddProperty = (props) => {
           Submit
         </Button>
       </Form>
-    </Container>
+    </Container></>
   );
 };
 

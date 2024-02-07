@@ -6,6 +6,10 @@ import Row from 'react-bootstrap/Row';
 
 import ImageService from '../../service/image-service';
 
+import PropertyService from '../../service/property';
+
+import './property.scss'
+
 const PropertyGrid = () => {
   const [properties, setProperties] = useState([]);
 
@@ -14,34 +18,12 @@ const PropertyGrid = () => {
 
   useEffect(() => {
     //load data from server
-
-    ImageService.getAllImages()
-      .then((response) => {
-        imgs = response;
-
-        propertyData = [];
-
-        imgs.forEach((img) => {
-          propertyData.push({
-            id: img.id,
-            name: img.id,
-            image: img.image,
-            address: {
-              street: '1000N 4th St',
-              city: 'Fairfield',
-              state: 'IA',
-              zip: '52557',
-            },
-          });
-        });
-
-        console.log(propertyData);
-
-        setProperties(propertyData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  
+    PropertyService.getProperties().then((res) => {
+      console.log(res);
+      propertyData = res;
+      setProperties(propertyData);
+  });
   }, []);
 
   return (
@@ -63,8 +45,3 @@ const PropertyGrid = () => {
   );
 };
 export default PropertyGrid;
-
-// <Row xs={2} md={4} className="g-4">
-// <Col xs={4}>
-// </Col>
-//</Row>
