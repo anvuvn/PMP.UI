@@ -49,6 +49,12 @@ const EditProperty = ()=>{
 
   const submitForm = (e) => {
     e.preventDefault();
+    console.log(property);
+    PropertyService.updateProperty(property).then((res) => {
+      console.log(res);
+
+    });
+
     // PropertyService.addProperty(property).then((res) => {
     //   navigate('/owner/image-uploader?id=' + res.id );
     // });
