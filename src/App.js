@@ -6,6 +6,8 @@ import PageRoutes from './routes';
 import Header from './components/header/header';
 import LeftPanel from './components/left/left-panel';
 import PropertyFilter from './components/property/property-filter';
+import { UserService } from "./service/userservice";
+import { useEffect, useState } from "react";
 
 function App() {
   return (

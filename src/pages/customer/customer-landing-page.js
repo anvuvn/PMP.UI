@@ -1,6 +1,6 @@
 const CustomerLandingPage= ()=>{
     return <>
-    Customer Langing Page
+        Customer Langing Page
     </>
 }
 export default CustomerLandingPage

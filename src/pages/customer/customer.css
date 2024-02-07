@@ -1,0 +1,48 @@
+/* PropertyList.css */
+@import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.card-header{
+    border:none
+}
+
+/* Custom styling for cards */
+.custom-card {
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.custom-card:hover {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card .card-body {
+    padding: 20px;
+}
+
+.custom-card .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.custom-card .card-text {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+/* Text color classes */
+.text-primary {
+    color: #6c63ff;
+}
+
+.text-muted {
+    color: #666;
+}
