@@ -46,7 +46,9 @@ const PageRoutes = () => {
             <Route path="add-property" element={<AddProperty></AddProperty>}></Route>
             <Route path="edit-property" element={<EditProperty></EditProperty>}></Route>
             <Route path="upload-images" element={<ImagesUpload></ImagesUpload>}></Route>
+            
             <Route path=":id/offerlist" element={<OfferList></OfferList>}></Route>
+
             <Route path="properties/add-property" element={<AddProperty></AddProperty>}></Route>
             <Route path="properties/image-uploader" element={<ImagesUpload></ImagesUpload>}></Route>
             <Route path="properties/edit-property" element={<EditProperty></EditProperty>}></Route>
