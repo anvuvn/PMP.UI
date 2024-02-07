@@ -9,10 +9,8 @@ import Users from "./pages/admin/users"
 import AdminDashBoard from "./components/dashboard/admin-dashboard"
 import Error403Permission from "./pages/403"
 import MessageList from "./pages/messages/message-list"
-import OwnerDashBoard from "./components/dashboard/owner-offersList"
 import OwnerProperty from "./pages/owner/owner-properties"
 import AdminProperties from "./pages/admin/admin-properties"
-import OwnerOffersList from "./components/dashboard/owner-offersList"
 import OfferList from "./pages/owner/offerList"
 import Favourite from "./components/favourite/favourite"
 import PropertyList from "./pages/customer/propertyList";
@@ -43,12 +41,15 @@ const PageRoutes = () => {
         </Route>
 
         <Route path="/owner" element={<OwnerLandingPage></OwnerLandingPage>}>
-            <Route path="offerslist" element={<OwnerOffersList></OwnerOffersList>}></Route>
             <Route path="properties" element={<OwnerProperty></OwnerProperty>}></Route>
             <Route path="offerlist" element={<OfferList></OfferList>}></Route>
             <Route path="add-property" element={<AddProperty></AddProperty>}></Route>
             <Route path="edit-property" element={<EditProperty></EditProperty>}></Route>
             <Route path="upload-images" element={<ImagesUpload></ImagesUpload>}></Route>
+            <Route path=":id/offerlist" element={<OfferList></OfferList>}></Route>
+            <Route path="properties/add-property" element={<AddProperty></AddProperty>}></Route>
+            <Route path="properties/image-uploader" element={<ImagesUpload></ImagesUpload>}></Route>
+            <Route path="properties/edit-property" element={<EditProperty></EditProperty>}></Route>
         </Route>
 
         <Route path="/403" element={<Error403Permission></Error403Permission>}></Route>
