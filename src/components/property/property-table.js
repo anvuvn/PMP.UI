@@ -21,7 +21,7 @@ const PropertyTable = ({ data, action }) => {
                 {data ? data.map((d, index) => {
                     return <tr key={d.id}>
                         <td>{d.id}</td>
-                        <td>{d.address?.line1}</td>
+                        <td>{d.address?.line1}, {d.address?.state}</td>
                         <td>{d.status}</td>
                         <td>{d.propertyType}</td>
                         {
