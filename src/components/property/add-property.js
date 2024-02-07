@@ -25,7 +25,9 @@ const AddProperty = (props) => {
   const submitForm = (e) => {
     e.preventDefault();
     PropertyService.addProperty(property).then((res) => {
-      navigate('/owner/image-uploader?id=' + res.id );
+//      navigate('/owner/image-uploader?id=' +res.id );
+        navigate('/owner/properties');
+
     });
   };
 

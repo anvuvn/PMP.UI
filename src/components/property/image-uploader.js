@@ -56,7 +56,6 @@ const ImagesUpload = (props) => {
         reloadImage();
         // navigate to property details page
         //navigate('/property/' + searchParams.get("id"));
-
       })
       .catch((error) => {
         console.log(error);
