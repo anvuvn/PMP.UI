@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Accordion } from "react-bootstrap"
+import Card from 'react-bootstrap/Card';
 import { MessageService } from "../../service/messager-service"
 import moment from 'moment'
 const MessageList = () => {
@@ -10,24 +11,34 @@ const MessageList = () => {
         })
     }, [])
     return <div className="message-list">
-        
-        {messages.length > 0 ?
-        <div>
-            <h1 className="text-center mb-5 mt-5">Message send to: {messages[0].receiverName}</h1>
-            <Accordion defaultActiveKey="0">
-                {messages.map((m,index) => {
-                    return <Accordion.Item eventKey={index}>
-                        
-                        <Accordion.Header>Sender: {m.senderName} - <span className="time-ago">{moment(m.createdDate).fromNow()}</span></Accordion.Header>
-                        <Accordion.Body>
-                            {m.message}
-                        </Accordion.Body>
-                    </Accordion.Item>
-                })}
 
-            </Accordion>
-        </div>
-            
+        {messages.length > 0 ?
+            <div>
+                <h3 className="text-center mb-2 mt-2">My Messages</h3>
+                <Accordion defaultActiveKey="0">
+                    {messages.map((m, index) => {
+                        return <Accordion.Item eventKey={index}>
+
+                            <Card>
+                                <Card.Header style={{ color: "#0D6EFD" }}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                                        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+                                    </svg>
+                                    &nbsp; Sender: {m.senderName}
+                                </Card.Header>
+                                <Card.Body>
+                                    <Card.Title>{m.message}</Card.Title>
+                                    <Card.Text>
+                                        {moment(m.createdDate).fromNow()}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Accordion.Item>
+                    })}
+
+                </Accordion>
+            </div>
+
             : ""}
 
     </div>
