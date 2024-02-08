@@ -14,7 +14,7 @@ const Offerlist = (props) => {
     
     return (
         <div>
-            <OfferTable ></OfferTable>
+            <OfferTable></OfferTable>
         </div>
     )
 }
