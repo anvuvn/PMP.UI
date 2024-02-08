@@ -8,21 +8,20 @@ import LeftPanel from './components/left/left-panel';
 import PropertyFilter from './components/property/property-filter';
 import { UserService } from "./service/userservice";
 import { useEffect, useState } from "react";
+import "./pages/customer/customer.css"
 
 function App() {
   return (
-    <div className="App mt-2">
-      {/* <PropertyFilter></PropertyFilter> */}
+    <div className="App mt-2 bg-indigo-50">
+       {/*<PropertyFilter></PropertyFilter>*/}
       <BrowserRouter>
         <div className='g-sidenav-show '>
           <LeftPanel></LeftPanel>
-          <main className='main-content py-4'>
+          <main className='main-content py-2'>
             <Header className="mb-5"></Header>
             <PageRoutes></PageRoutes>
           </main>
         </div>
-
-
       </BrowserRouter>
     </div>
   );

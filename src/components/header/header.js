@@ -1,9 +1,10 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './header.scss'
-import { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { UserService } from '../../service/userservice'
 import { MessageService } from '../../service/messager-service'
+import Logo from "../Logo";
 const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -16,7 +17,6 @@ const Header = () => {
         UserService.logout(e);
         reloadStatus()
         navigate("/authenticate")
-
     }
     const reloadStatus = () => {
         let user = UserService.getUser();
@@ -43,8 +43,8 @@ const Header = () => {
 
     return <div className="">
         {isAuthenticated ?
-            <div className='header d-flex justify-content-between mx-4'>
-                <div><h2>👋 Welcome, {userName} !</h2></div>
+            <div className='header d-flex justify-content-between mx-4 mt-4'>
+                <div><h1>👋 Welcome, {userName} !</h1></div>
                 <div className={"d-flex"}>
                     <Link to="/messages" className="text-dark position-relative mx-4">
                         <i className="material-icons">mail</i>
@@ -58,7 +58,15 @@ const Header = () => {
                 </div>
             </div>
             :
-            <div className="right-div"><Link to="/authenticate">sign in</Link> </div>}
+            <div className={"container"}>
+                <div className={"flex justify-content-between items-center"}>
+                    <Link to={"/"}><Logo></Logo></Link>
+                    <Link className={"text-right flex items-center"} to="/authenticate">
+                        Sign in
+                        <i className="material-icons ml-2">login</i>
+                    </Link>
+                </div>
+            </div>}
     </div>
 }
 export default Header

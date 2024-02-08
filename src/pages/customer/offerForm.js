@@ -1,71 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Carousel } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-import './customer.css'; // Import custom CSS file for styling
+import React, { useState } from 'react';
+import {useParams, useNavigate, Link} from 'react-router-dom';
+import {UserService} from "../../service/userservice";
+import axios from "axios";
 
-function PropertyList() {
-    const [properties, setProperties] = useState([]);
-    const navigate = useNavigate(); // Get navigate function for navigation
+function OfferForm() {
+    const [amount, setAmount] = useState('');
+    const [message, setMessage] = useState('');
+    const { propertyId } = useParams(); // Extract propertyId from the path
+    const userId = UserService.getUser().userId;
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch('http://localhost:8080/properties')
-            .then(response => response.json())
-            .then(data => setProperties(data))
-            .catch(error => console.error('Error fetching properties:', error));
-    }, []);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    const handleMakeOffer = (propertyId) => {
-        navigate(`/properties/${propertyId}/offer`);
+        const formData = {
+            amount: parseFloat(amount), // Ensure amount is converted to a number
+            message,
+            userId,
+            propertyId
+        };
+        console.log(formData)
+
+        try {
+            const response = await fetch(`http://localhost:8080/properties/${propertyId}/offers`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            if (!response.ok) {
+                throw new Error('Failed to submit offer');
+            }
+            console.log('Offer submitted successfully');
+            navigate("/customer/offers-history");
+        } catch (error) {
+            console.error('Error submitting offer:', error.message);
+        }
     };
 
     return (
-        <Container fluid>
-            <Row className="justify-content-center">
-                {properties.map(property => (
-                    <Col key={property.id} xs={12} sm={6} md={4} lg={3} className="mb-4 mt-6">
-                        <div className="card" data-animation="true">
-                            <div className="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <a href="#" className="d-block blur-shadow-image">
-                                    {property.images && property.images.length > 0 ? (
-                                        <Carousel interval={null} prevLabel="" nextLabel="">
-                                            {property.images.map((image, index) => (
-                                                <Carousel.Item key={index}>
-                                                    <img src={image} className="img-fluid shadow border-radius-lg"  alt={`Property ${property.id} image ${index}`} />
-                                                </Carousel.Item>
-                                            ))}
-                                        </Carousel>
-                                    ) : (
-                                        <img className="img-fluid shadow border-radius-lg" alt={"property"} variant="top" src="https://placehold.co/600x400" />
-                                    )}
-                                </a>
-                            </div>
-                            <div className="card-body text-center">
-                                <div className="d-flex mt-n6 mx-auto">
-                                    <button onClick={() => handleMakeOffer(property.id)} className="btn btn-link text-primary mx-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Make an offer">
-                                        <span className="btn-inner--text">Make an offer</span>
-                                    </button>
-                                </div>
-                                <h5 className="font-weight-normal mt-3">
-                                    {property.propertyType}
-                                </h5>
-                                <p className="mb-0">
-                                    {property.address.line1}, {property.address.city}, {property.address.state}
-                                </p>
-                            </div>
-                            <hr className="dark horizontal my-0" />
-                            <div className="card-footer d-flex">
-                                <p className="font-weight-normal my-auto">${property.price}</p>
-                                <i className="material-icons position-relative ms-auto text-lg me-1 my-auto">place</i>
-                                <p className="text-sm my-auto">{property.address.city}, {property.address.state}</p>
-                            </div>
+        <div className="px-6 pt-5">
+            <div className="row">
+                <div className="col-lg-4">
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <label htmlFor="amount" className="form-label">Amount</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                id="amount"
+                                value={amount}
+                                onChange={(e) => setAmount(e.target.value)}
+                                required
+                            />
                         </div>
-                    </Col>
-                ))}
-            </Row>
-        </Container>
+                        <div className="mb-3">
+                            <label htmlFor="message" className="form-label">Message</label>
+                            <textarea
+                                className="form-control"
+                                id="message"
+                                rows={5}
+                                placeholder="Say a few words about who you are or what you're working on."
+                                spellCheck="false"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                required
+                            ></textarea>
+                        </div>
+                        <div className={"flex justify-content-between"}>
+                            <button type="submit"
+                                    className="flex items-center bg-indigo-600 text-white font-montserrat py-1 px-3 font-medium rounded-full hover:bg-indigo-500 transition-all duration-300">
+                                Submit Offer
+                            </button>
+                            <Link
+                                className="flex items-center bg-orange-500 text-white font-montserrat py-1 px-3 font-medium rounded-full hover:bg-orange-400 transition-all duration-300"
+                                to={"/customer/properties"}>Back</Link>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     );
 }
 
-export default PropertyList;
-
-
+export default OfferForm;

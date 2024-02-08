@@ -1,12 +1,14 @@
 
 import PropertyGrid from '../../components/property/property-grid';
+import React from "react";
+import Hero from "../../components/hero/hero";
 
 const DefaultLandingPage = () => {
   return (
-    <> 
-      <PropertyGrid></PropertyGrid>
-
-    </>
+      <>
+          <Hero/>
+          {/*<PropertyGrid></PropertyGrid>*/}
+      </>
   );
 };
 

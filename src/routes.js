@@ -18,10 +18,15 @@ import OfferForm from "./pages/customer/offerForm";
 import AddProperty from "./components/property/add-property"
 import ImagesUpload from "./components/property/image-uploader"
 import EditProperty from "./components/property/edit-property"
+import Example from "./pages/customer/example"
+import OfferHistory from "./pages/customer/offersHistory";
+import Panorama from "./pages/customer/panorama";
 
 const PageRoutes = () => {
     return <Routes>
         <Route path="/" element={<DefaultLandingPage></DefaultLandingPage>}></Route>
+        <Route path={"/properties/:propertyId"} element={<OfferForm/>}></Route>
+        <Route path={"/properties/:propertyId/panorama"} element={<Panorama/>}></Route>
         <Route path="/authenticate" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/messages" element={<MessageList></MessageList>}></Route>
@@ -33,11 +38,11 @@ const PageRoutes = () => {
             <Route path="properties" element={<AdminProperties></AdminProperties>}></Route>
             <Route path="users" element={<Users></Users>}></Route>
         </Route>
-
         <Route path="/customer">
             <Route path={""} element={<CustomerLandingPage></CustomerLandingPage>}></Route>
             <Route path="properties" element={<PropertyList></PropertyList>}></Route>
-            <Route path={"properties/:propertyId/offer"} element={<OfferForm/>}></Route>
+            <Route path="example" element={<Example/>}></Route>
+            <Route path={"offers-history"} element={<OfferHistory/>}></Route>
         </Route>
 
         <Route path="/owner" element={<OwnerLandingPage></OwnerLandingPage>}>
@@ -46,7 +51,9 @@ const PageRoutes = () => {
             <Route path="add-property" element={<AddProperty></AddProperty>}></Route>
             <Route path="edit-property" element={<EditProperty></EditProperty>}></Route>
             <Route path="upload-images" element={<ImagesUpload></ImagesUpload>}></Route>
+            
             <Route path=":id/offerlist" element={<OfferList></OfferList>}></Route>
+
             <Route path="properties/add-property" element={<AddProperty></AddProperty>}></Route>
             <Route path="properties/image-uploader" element={<ImagesUpload></ImagesUpload>}></Route>
             <Route path="properties/edit-property" element={<EditProperty></EditProperty>}></Route>

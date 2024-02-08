@@ -23,16 +23,10 @@ const PropertyCard = (props) => {
   const extract_subtitle = () => {
     let address = props.property.address;
     let result = '';
-    //
-    if(address.line1) 
-      result += address.line1 +', ';
-    if(address.city) 
-      result += address.city+', ';
-    if(address.state) 
-      result += address.state+', ';
-    if(address.postalCode) 
-      result += address.postalCode;
-    //
+    if(address.line1) result += address.line1 +', ';
+    if(address.city) result += address.city+', ';
+    if(address.state) result += address.state+', ';
+    if(address.postalCode) result += address.postalCode;
     return result;
   }; 
 

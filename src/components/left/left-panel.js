@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { UserService } from "../../service/userservice"
 import "./styles.css"
+import Logo from "../Logo";
 
 const LeftPanel = () => {
     const [role, setRole] = useState({})
@@ -20,19 +21,21 @@ const LeftPanel = () => {
     }, [location])
     const getAddminLink = () => {
         return <>
-            <li className="nav-item">
+            <li className="nav-item hover:bg-indigo-200">
                 <Link class="nav-link text-black " to="/admin/dashboard">
-
+                    <i className={"material-icons"}>dashboard</i>
                     <span className="nav-link-text ms-1">Dashboard</span>
                 </Link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item hover:bg-indigo-200">
                 <Link className="nav-link text-black " to="/admin/properties">
+                    <i className={"material-icons"}>apartment</i>
                     <span className="nav-link-text ms-1">Properties</span>
                 </Link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item hover:bg-indigo-200">
                 <Link className="nav-link text-black " to="/admin/users">
+                    <i className={"material-icons"}>group</i>
                     <span className="nav-link-text ms-1">Users</span>
                 </Link>
             </li>
@@ -40,14 +43,15 @@ const LeftPanel = () => {
     }
     const getOwnerLink = () => {
         return <>
-            <li className="nav-item">
+            <li className="nav-item hover:bg-indigo-200">
                 <Link className="nav-link text-black " to="/owner/offerlist">
-
+                    <i className={"material-icons"}>money</i>
                     <span className="nav-link-text ms-1">Offer List</span>
                 </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item hover:bg-indigo-200">
                 <Link class="nav-link text-black " to="/owner/properties">
+                    <i className={"material-icons"}>apartment</i>
                     <span className="nav-link-text ms-1">My Properties</span>
                 </Link>
             </li>
@@ -55,11 +59,19 @@ const LeftPanel = () => {
     }
     const getCustomerLink = () => {
         return <>
-            <li className="nav-item">
+            <li className="nav-item hover:bg-indigo-200">
                 <Link className="nav-link text-black " to="/customer/properties">
                     <i className={"material-icons"}>apartment</i>
                     <span className="nav-link-text ms-1">
                         List Properties
+                    </span>
+                </Link>
+            </li>
+            <li className={"nav-item hover:bg-indigo-200"}>
+                <Link className="nav-link text-black " to="/customer/offers-history">
+                    <i className={"material-icons"}>money</i>
+                    <span className="nav-link-text ms-1">
+                        Offers History
                     </span>
                 </Link>
             </li>
@@ -71,15 +83,12 @@ const LeftPanel = () => {
     if(!isLoggedIn){
         return "";
     }
-    return <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 custom-nav" id="sidenav-main">
+    return <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 custom-nav bg-indigo-100" id="sidenav-main">
 
         <div className="sidenav-header">
-            <a className="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-                <span className={"material-icons"}>
-                    real_estate_agent
-                </span>
-                <span className="ms-1 font-weight-bold text-blue">Main Dashboard</span>
-            </a>
+            <Link to={"/"} className="navbar-brand m-0" target="_blank">
+                <Logo/>
+            </Link>
         </div>
 
 
@@ -88,7 +97,7 @@ const LeftPanel = () => {
                 {role.isAdmin ? getAddminLink() : ""}
                 {role.isOwner ? getOwnerLink() : ""}
                 {role.isCustomer ? getCustomerLink() : ""}
-                <li className="nav-item">
+                <li className="nav-item hover:bg-indigo-200">
                     <Link className="nav-link text-black" to="/messages">
                         <i className={"material-icons"}>mail</i>
                         <span className="nav-link-text ms-1">Messages</span>
