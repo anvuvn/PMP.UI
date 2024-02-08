@@ -32,6 +32,12 @@ function OfferForm() {
             if (!response.ok) {
                 throw new Error('Failed to submit offer');
             }
+            let result =await response.json();
+            if(!result.success){
+                alert(result.message)
+                navigate("/customer/properties");
+                return;
+            }
             console.log('Offer submitted successfully');
             navigate("/customer/offers-history");
         } catch (error) {
