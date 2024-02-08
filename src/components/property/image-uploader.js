@@ -120,9 +120,13 @@ const ImagesUpload = (props) => {
 
   return (    
     <>
-    <Link to="/owner/properties">Back to properties</Link>
+      <div className="text-1xl font-bolder leading-tight text-indigo-700 px-2" style={{margin:30}}>
+                <Link to="/owner/properties">Back to properties</Link>
+                <span className={"text-gray-500 mx-4"}> / </span>
+                Image Uploader
+      </div>
 
-      <h2 style={{textAlign:'center'}}>Upload images for property</h2>
+      <h1 style={{textAlign:'center'}}>Upload images for property</h1>
       <h6 style={{fontStyle:'italic', textAlign:'center', color:'red'}}>(uploading new images will override the older ones)</h6>
       
       <div className="row">
