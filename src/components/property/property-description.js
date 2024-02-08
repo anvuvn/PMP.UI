@@ -56,7 +56,7 @@ const PropertyDescription = (props) => {
           {' '}
           <div className="card-footer d-flex items-center justify-content-between">
             <Link
-              to={`/properties/${property.id}`}
+              to={`/properties/${property.id}/offer`}
               className="flex items-center bg-indigo-600 text-white font-montserrat py-1 px-3 font-medium rounded-full hover:bg-indigo-500 transition-all duration-300"
               type="button"
               data-bs-toggle="tooltip"
