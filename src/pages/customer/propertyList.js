@@ -25,17 +25,15 @@ function PropertyList() {
         navigate(`/customer/properties/${propertyId}/offer`);
     };
 
-    const handleSearch = (searchInfo) => {
-        PropertyService.searchProperty(searchInfo).then(res => {
-            setProperties(res);
-        });
+    const handleSearch = (properties) => {
+            setProperties(properties);
     };
 
     return (
         <Container fluid>
             <Row>
                 <Col>
-                    {/*<PropertyFilter onSearch={handleSearch} />*/}
+                    <PropertyFilter onSearch={handleSearch} />
                 </Col>
             </Row>
             <Row className="justify-content-center">
