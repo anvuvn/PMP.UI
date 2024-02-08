@@ -9,48 +9,56 @@ import OwnerService from '../../service/owner-service';
 
 const OfferTable = ({ data, action }) => {
 
-    //console.log("Data:::::"+data);
+    const[ownerId,setOwnerId]=useState();//Need to ask Anh
 
-    const [status, setStatus] = useState("");
+    const [selectedStatus, setSelectedStatus] = useState(null);
 
     const statusHandleChange = (event) => {
 
-        const selectedStatus = event;
-        setStatus(selectedStatus);
-
+    
+       setSelectedStatus(event);
+       
+        fetchOffersByStatus(event);
     }
-
-    console.log('Selected status:', status);
 
     //Need to handle get offers by status 
-    const fetchOffersByStatus = () => {
+    const fetchOffersByStatus = (status) => {
+
+        alert("Status:::"+status);
+
+        
     }
 
-    const acceptHandleChange = (id) => {
+    const acceptHandleChange = (d) => {
+
+        alert("d.id"+d.id);
+      
 
         const data={
-            offerId:id
+            offerId:d.id
         }
 
         let result = window.confirm('Are you sure you want to Approve?');
         if(result){
-            OwnerService.acceptOffer(id,data).then(response => {
+            OwnerService.acceptOffer(d.id,data).then(response => {
                 console.log(response);
             }).catch(error => console.log(error.message));
         }
 
     }
 
-    const declineHandleChange = (id) => {
+    const declineHandleChange = (d) => {
+
+        setOwnerId(d.property.ownerId);
       
         const data={
-            offerId:id
+            offerId:d.id
         }
         let result = window.confirm('Are you sure you want to Approve?');
       
         if(result){
 
-            OwnerService.cancelOffer(id,data)
+            OwnerService.cancelOffer(d.id,data)
             .then(res => {
                 console.log(res);
             }).catch(error=>console.log(error.message));
@@ -74,14 +82,17 @@ const OfferTable = ({ data, action }) => {
                     <div class="col-4 col">
                         <Dropdown onSelect={(eventKey) => { statusHandleChange(eventKey) }}>
                             <Dropdown.Toggle id="dropdown-basic">
-                                Select by Status
+                                  {selectedStatus ? selectedStatus : "Select by Status"}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
 
-                                <Dropdown.Item key="Available" eventKey="Available">Available</Dropdown.Item>
-                                <Dropdown.Item key="Pending" eventKey="Pending">Pending</Dropdown.Item>
-                                <Dropdown.Item key="Contingent" eventKey="Contingent">Contingent</Dropdown.Item>
-                                <Dropdown.Item key="Complete" eventKey="Complete">Complete</Dropdown.Item>
+                                <Dropdown.Item key="created" eventKey="created">created</Dropdown.Item>
+                                <Dropdown.Item key="pending" eventKey="pending">pending</Dropdown.Item>
+                                <Dropdown.Item key="contingent" eventKey="Contingent">Contingent</Dropdown.Item>
+                                <Dropdown.Item key="OwnerAccepted" eventKey="OwnerAccepted">Owner Accepted</Dropdown.Item>
+                                <Dropdown.Item key="CustomerAccepted" eventKey="CustomerAccepted">Customer Accepted</Dropdown.Item>
+                                <Dropdown.Item key="cancelled" eventKey="cancelled">cancelled</Dropdown.Item>
+                                <Dropdown.Item key="rejected" eventKey="rejected">rejected</Dropdown.Item>
 
                             </Dropdown.Menu>
                         </Dropdown>
@@ -112,8 +123,8 @@ const OfferTable = ({ data, action }) => {
                                 <td>{d.status}</td>
 
                                 <td>
-                                    <Button variant="outline-success" style={{ marginRight: 10 }} onClick={() => acceptHandleChange(d.id)}>Accept</Button>{' '}
-                                    <Button variant="outline-danger" onClick={() => declineHandleChange(d.id)}>Decline</Button>{' '}
+                                    <Button variant="outline-success" style={{ marginRight: 10 }} onClick={() => acceptHandleChange(d)}>Accept</Button>{' '}
+                                    <Button variant="outline-danger" onClick={() => declineHandleChange(d)}>Decline</Button>{' '}
                                     <button type='button' class="btn-message btn btn-outline-warning" btn-sm style={{ marginLeft: 10 }}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-arrow-up" viewBox="0 0 16 16">
                                         <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4.5a.5.5 0 0 1-1 0V5.383l-7 4.2-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h5.5a.5.5 0 0 1 0 1H2a2 2 0 0 1-2-1.99zm1 7.105 4.708-2.897L1 5.383zM1 4v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1" />
                                         <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.354 1.25 1.25a.5.5 0 0 1-.708.708L13 12.207V14a.5.5 0 0 1-1 0v-1.717l-.28.305a.5.5 0 0 1-.737-.676l1.149-1.25a.5.5 0 0 1 .722-.016" />

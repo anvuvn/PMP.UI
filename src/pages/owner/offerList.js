@@ -16,9 +16,7 @@ const Offerlist = (props) => {
     const [offers, setOffers] = useState([]);
 
     const fetchOffersByPropertyID=(pid)=>{
-       console.log("fetchOffersByPropertyID"+pid)
-
-       // alert("Inside::"+pid);
+    
        OwnerService.getOfferByProperty(pid).then(
            response=>{
                setOffers(response);

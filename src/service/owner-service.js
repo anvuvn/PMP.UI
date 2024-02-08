@@ -13,7 +13,8 @@ export const OwnerService = {
     cancelOffer:async function(offerId,data){
        let result = await API.post(`/offers/owner/${offerId}/cancel`,data);
        return result.data;
-    }
+    },
+
 }
 
 export default OwnerService
