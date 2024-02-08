@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CustomerService from "../../service/customer-service";
 import './customer.css';
+import { Link } from 'react-router-dom';
 
 const OfferHistory = () => {
     const [offers, setOffers] = useState([]);
@@ -114,11 +115,11 @@ const OfferHistory = () => {
                                                     <span className={"mx-2 text-blue-800"}>Accept </span>
                                                     <i className="material-icons mr-1 text-blue-800">task_alt</i>
                                                 </button>
-                                                <a href="#"
+                                                <Link to={`/properties/${offer.propertyId}`}
                                                    className="text-green-600 hover:text-green-900 focus:outline-none focus:underline flex items-center">
                                                     <span className={"mx-2 text-green-800"}>Go to Property </span>
                                                     <i className="material-icons mr-1 text-green-800">login</i>
-                                                </a>
+                                                </Link>
                                             </div>
                                         </td>
                                     </tr>
