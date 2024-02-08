@@ -22,11 +22,9 @@ const OfferTable = ({ action, onDataRefresh }) => {
 
     }
 
-    console.log("offersList:", offers);
+    //console.log("offersList:", offers);
 
     useEffect(() => {
-
-        console.log("passs property ID:", id);
 
         fetchOffersByPropertyID(id);
 
@@ -88,11 +86,6 @@ const OfferTable = ({ action, onDataRefresh }) => {
         }
     }
 
-    const getAction = () => {
-
-        alert("Send Message::");
-    };
-
     const getMessageIcon = () => {
         return <button type='button' class="btn-message btn btn-outline-warning" btn-sm style={{ marginLeft: 10 }}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-arrow-up" viewBox="0 0 16 16">
@@ -103,8 +96,11 @@ const OfferTable = ({ action, onDataRefresh }) => {
     }
     return (
         <div>
-            <h1>Customer Offer List</h1>
-
+           
+           <div className="mt-5 mb-4 flex justify-content-between items-center px-4">
+                <h1 className="text-1xl font-bolder leading-tight text-indigo-700 px-2">Customer Offer List</h1>
+            
+           </div>
             <div class="container">
                 <div class="row">
                     <div class="col-1 col"></div>
@@ -154,7 +150,7 @@ const OfferTable = ({ action, onDataRefresh }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {offers ? offers.map((d, index) => {
+                            {offers.length >0 ? offers.map((d, index) => {
                                 return <tr key={d.id}>
                                     {/*  <td>{d.id}</td> */}
                                     <td>{d.name}</td>
@@ -162,15 +158,29 @@ const OfferTable = ({ action, onDataRefresh }) => {
                                     <td>{d.status}</td>
 
                                     <td>
-                                        <Button variant="outline-success" style={{ marginRight: 10 }} onClick={() => acceptHandleChange(d)}>Accept</Button>{' '}
-                                        <Button variant="outline-danger" onClick={() => declineHandleChange(d)}>Decline</Button>{' '}
+                                        <tr>
+                                            <td>
+                                                <Button variant="outline-success" style={{ marginRight: 10 }} onClick={() => acceptHandleChange(d)}>Accept</Button>{' '}
+                                            </td>
+                                            <td>
+                                                <Button variant="outline-danger" onClick={() => declineHandleChange(d)}>Decline</Button>{' '}
+                                            </td>
+                                            <td>
+                                                <MessageDialog title={getMessageIcon()} receiver={{ id: d.customer_id, name: d.name }}></MessageDialog>
+                                            </td>
+                                        </tr>
 
-                                        <MessageDialog title={getMessageIcon()} receiver={{ id: d.customer_id, name: d.name }}></MessageDialog>
+                                        
+                                        
                                     </td>
 
-
                                 </tr>
-                            }) : ""}
+                            }) : (
+                                <tr>
+                                    <td>No Offers!</td>
+                                </tr>
+                            )
+                            }
                         </tbody>
                     </table>
                 </div>
