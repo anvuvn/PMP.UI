@@ -18,12 +18,6 @@ const OwnerProperty = () => {
         fetchProperties();
     }, []);
     
-    const filterDeleted = (p) => {
-        const result = p.filter(property => property.status !== PropertyStatus.Deleted);
-        return result;
-
-    }
-
     const deleteProps = (id) => {
         PropertyService.changePropertyStatus(id, PropertyStatus.Deleted).then(
             res => {
