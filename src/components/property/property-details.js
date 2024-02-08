@@ -37,10 +37,8 @@ const PropertyDetails = (props) => {
 
   const loadAllImages = () => {
     let pid = id;
-    ImageService.getAllImages(pid).then((res) => {
-      console.log(res);
-
-      setImages(res);
+    ImageService.getPropertyImages(pid).then((res) => {
+      setImages(res.data);
     });
   };
 
