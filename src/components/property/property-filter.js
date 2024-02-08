@@ -10,11 +10,11 @@ const PropertyFilter = ({ onSearch }) => {
     const applySearch = () => {
         let form = formRef.current;
         let searchInfo = {
-            minPrice: form["min"].value || 0,
-            maxPrice: form["max"].value || 0,
+            minPrice: parseFloat(form["min"].value) || 0,
+            maxPrice: parseFloat(form["max"].value) || 0,
             propertyType: form["propertyType"].value,
-            location: form["location"].value,
-            numberOfRoom: form["numberOfRoom"].value || 0
+            //location: form["location"].value,
+            numberOfRoom: parseFloat(form["numberOfRoom"].value) || 1
         }
         console.log(searchInfo)
         PropertyService.searchProperty(searchInfo).then(res => {

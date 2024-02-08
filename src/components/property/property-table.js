@@ -21,10 +21,10 @@ const PropertyTable = ({ data, action }) => {
                         {data ? (
                             data.map((d, index) => (
                                 <tr key={d.id} className="hover:bg-gray-50">
-                                    <td className="px-6 py-4 whitespace-no-wrap">{d.id}</td>
-                                    <td className="px-6 py-4 whitespace-no-wrap">{d.address?.line1}, {d.address?.state}</td>
-                                    <td className="px-6 py-4 whitespace-no-wrap">{d.status}</td>
-                                    <td className="px-6 py-4 whitespace-no-wrap">{d.propertyType}</td>
+                                    <td className="px-6 py-4 whitespace-no-wrap text-center">{d.id}</td>
+                                    <td className="px-6 py-4 whitespace-no-wrap text-center">{d.address?.line1}, {d.address?.state}</td>
+                                    <td className="px-6 py-4 whitespace-no-wrap text-center">{d.status}</td>
+                                    <td className="px-6 py-4 whitespace-no-wrap text-center">{d.propertyType}</td>
                                     {typeof action === "function" && (
                                         <td className="px-6 py-4 whitespace-no-wrap">
                                             {action(d)}

@@ -10,13 +10,6 @@ const AdminLandingPage = () => {
     return <>
         {!isAdmin ? <Navigate to="403"></Navigate> : ""}
         {localtion.pathname === "/admin" ? <Navigate to="/admin/dashboard"></Navigate> : ""}
-        <h3>Admin menu</h3>
-        <ul>
-            <li><Link to="/admin/dashboard">dashboard</Link></li>
-            <li> <Link to="/admin/users">users</Link></li>
-        </ul>
-
-
         <Outlet></Outlet>
     </>
 }

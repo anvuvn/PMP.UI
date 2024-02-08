@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropertyTable from '../../components/property/property-table';
 import PropertyService from '../../service/property';
 import SendMessage from '../../components/messages/send-message';
@@ -35,32 +35,34 @@ const AdminProperties = () => {
   const getAction = (sender) => {
     let property = sender;
     return (
-      <>
+      <div className={"flex items-center justify-center"}>
         <a
-          className="action-link"
-          href="#"
-          onClick={(e) => sendMessage(e, sender)}
+            className="text-green-600 hover:text-green-900 focus:outline-none focus:underline flex items-center mr-4"
+            href="#"
+            onClick={(e) => sendMessage(e, sender)}
         >
-          Send message
+          <span className={"mx-2 text-green-800"}>Send message </span>
+          <i className="material-icons mr-1 text-green-800">send</i>
         </a>
         {property.status === PropertyStatus.Waiting ? (
-          <a
-            className="action-link"
-            href="#"
-            onClick={(e) => approveProperty(e, sender)}
-          >
-            Approve
-          </a>
+            <a
+                className="text-green-600 hover:text-green-900 focus:outline-none focus:underline flex items-center"
+                href="#"
+                onClick={(e) => approveProperty(e, sender)}
+            >
+              <span className={"mx-2 text-blue-800"}>Approve </span>
+              <i className="material-icons mr-1 text-blue-800">task_alt</i>
+            </a>
         ) : (
-          ''
+            ''
         )}
-      </>
+      </div>
     );
   };
   const getDialog = () => {
     return (
-      <MessageDialog
-        show={showMessage}
+        <MessageDialog
+            show={showMessage}
         onClose={handleClose}
         receiver={receiver}
       ></MessageDialog>
@@ -70,12 +72,18 @@ const AdminProperties = () => {
     getProppertiesByStatus();
   }, []);
   return (
-    <>
-      <h3>Admin Properties</h3>
+    <div className={"px-4 mt-6"}>
+      <div className="mt-4 mb-4 flex justify-content-between items-center">
+        <div className="text-1xl font-bolder leading-tight text-indigo-700 px-2">
+          Admin
+          <span className={"text-gray-500 mx-4"}> / </span>
+          Properties
+        </div>
+      </div>
 
       <PropertyTable data={properties} action={getAction}></PropertyTable>
       {getDialog()}
-    </>
+    </div>
   );
 };
 

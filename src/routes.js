@@ -20,11 +20,13 @@ import ImagesUpload from "./components/property/image-uploader"
 import EditProperty from "./components/property/edit-property"
 import Example from "./pages/customer/example"
 import OfferHistory from "./pages/customer/offersHistory";
+import Panorama from "./pages/customer/panorama";
 
 const PageRoutes = () => {
     return <Routes>
         <Route path="/" element={<DefaultLandingPage></DefaultLandingPage>}></Route>
         <Route path={"/properties/:propertyId"} element={<OfferForm/>}></Route>
+        <Route path={"/properties/:propertyId/panorama"} element={<Panorama/>}></Route>
         <Route path="/authenticate" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/messages" element={<MessageList></MessageList>}></Route>

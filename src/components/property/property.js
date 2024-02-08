@@ -34,16 +34,18 @@ const PropertyItem = ({ property, handleMakeOffer }) => {
             <div className="card-footer d-flex items-center justify-content-between">
                 <Link
                     to={`/properties/${property.id}`}
-                    className="bg-indigo-600 text-white font-montserrat py-1 px-3 font-medium rounded-full hover:bg-indigo-500 transition-all duration-300"
+                    className="flex items-center bg-indigo-600 text-white font-montserrat py-1 px-3 font-medium rounded-full hover:bg-indigo-500 transition-all duration-300"
                     type="button" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                    <span className={"text-sm"}>See details</span>
+                    <span className={"text-sm mr-2"}>Send offer</span>
+                    <i className={"material-icons"}>send</i>
                 </Link>
                 <Link
-                    to={`/properties/${property.id}`}
-                    className="bg-green-600 text-white font-montserrat py-1 px-3 font-medium rounded-full hover:bg-green-500 transition-all duration-300">
-                    <span className={"material-icons"}>
-                        3d_rotation
-                    </span>
+                    to={`/properties/${property.id}/panorama`}
+                    className="flex items-center bg-green-600 text-white font-montserrat py-1 px-3 font-medium rounded-full hover:bg-green-500 transition-all duration-300">
+                    <span className={"text-sm mr-2"}>3D Tour</span>
+                    <i className={"material-icons"}>
+                        view_in_ar
+                    </i>
                 </Link>
             </div>
         </div>

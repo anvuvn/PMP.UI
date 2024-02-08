@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { UserService } from "../../service/userservice"
 import "./styles.css"
+import Logo from "../Logo";
 
 const LeftPanel = () => {
     const [role, setRole] = useState({})
@@ -22,18 +23,19 @@ const LeftPanel = () => {
         return <>
             <li className="nav-item hover:bg-indigo-200">
                 <Link class="nav-link text-black " to="/admin/dashboard">
-
+                    <i className={"material-icons"}>dashboard</i>
                     <span className="nav-link-text ms-1">Dashboard</span>
                 </Link>
             </li>
             <li class="nav-item hover:bg-indigo-200">
                 <Link className="nav-link text-black " to="/admin/properties">
+                    <i className={"material-icons"}>apartment</i>
                     <span className="nav-link-text ms-1">Properties</span>
                 </Link>
             </li>
             <li class="nav-item hover:bg-indigo-200">
                 <Link className="nav-link text-black " to="/admin/users">
-
+                    <i className={"material-icons"}>group</i>
                     <span className="nav-link-text ms-1">Users</span>
                 </Link>
             </li>
@@ -84,12 +86,9 @@ const LeftPanel = () => {
     return <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 custom-nav bg-indigo-100" id="sidenav-main">
 
         <div className="sidenav-header">
-            <a className="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-                <span className={"material-icons"}>
-                    real_estate_agent
-                </span>
-                <span className="ms-1 font-weight-bold text-blue">Main Dashboard</span>
-            </a>
+            <Link to={"/"} className="navbar-brand m-0" target="_blank">
+                <Logo/>
+            </Link>
         </div>
 
 

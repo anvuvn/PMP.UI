@@ -13,7 +13,7 @@ import "./pages/customer/customer.css"
 function App() {
   return (
     <div className="App mt-2 bg-indigo-50">
-      {/* <PropertyFilter></PropertyFilter> */}
+       {/*<PropertyFilter></PropertyFilter>*/}
       <BrowserRouter>
         <div className='g-sidenav-show '>
           <LeftPanel></LeftPanel>
@@ -22,8 +22,6 @@ function App() {
             <PageRoutes></PageRoutes>
           </main>
         </div>
-
-
       </BrowserRouter>
     </div>
   );

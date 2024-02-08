@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { AdminService } from "../../service/admin-service";
 import PropertyTable from "../property/property-table";
 import CustomerTable from "../customer/customer-table";
 import './dashboard.scss'
-import Favourite from "../favourite/favourite";
 const AdminDashBoard = () => {
 
     const [dashboard, setDashboard] = useState({});
@@ -13,9 +12,15 @@ const AdminDashBoard = () => {
         })
     }, [])
     return <>
-        <h1>Admin dashboard</h1>
-        <div className="admin-dashboard">
-            <div className="dashboard-block col-6">
+        <div className="mt-6 mb-4 flex justify-content-between items-center px-4">
+            <div className="text-1xl font-bolder leading-tight text-indigo-700 px-2">
+                Admin
+                <span className={"text-gray-500 mx-4"}> / </span>
+                Dashboard
+            </div>
+        </div>
+        <div className="admin-dashboard px-4">
+            <div className="dashboard-block col-5">
                 <div class="card mb-4 ">
                     <div class="d-flex">
 

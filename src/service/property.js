@@ -29,7 +29,7 @@ export const PropertyService = {
     return result.data;
   },
   searchProperty: async function (data) {
-    let result = await API.post(`/properties/filters`, data);
+    let result = await API.post(`/properties/filters`, data, {headers: {"Content-Type": "application/json"}});
     return result.data;
     },
   getProperties: async function () {

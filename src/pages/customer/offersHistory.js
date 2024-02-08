@@ -5,11 +5,29 @@ import './customer.css';
 const OfferHistory = () => {
     const [offers, setOffers] = useState([]);
 
-    useEffect(() => {
+    const reloadOffers = () => {
         CustomerService.getOffers().then(res => {
             setOffers(res)
         })
+    }
+
+    useEffect(() => {
+        reloadOffers()
     }, []);
+
+    const cancelOffer = (e, offer) => {
+        e.preventDefault();
+        CustomerService.cancelOffer(offer.id).then(res => {
+            reloadOffers();
+        })
+    }
+
+    const acceptOffer = (e, offer) => {
+        e.preventDefault();
+        CustomerService.acceptOffer(offer.id).then(res => {
+            reloadOffers();
+        })
+    }
 
     if(offers.length == 0) return (
         <div className="w-full h-screen">
@@ -21,9 +39,6 @@ const OfferHistory = () => {
                             <span className={"text-gray-500 mx-4"}> / </span>
                             Offers History
                         </div>
-                    </div>
-                    <div className="text-2xl font-bolder leading-tight text-indigo-700 px-2 mt-4">
-                        My offers list is empty
                     </div>
                 </div>
             </div>
@@ -41,9 +56,6 @@ const OfferHistory = () => {
                             Offers History
                         </div>
                     </div>
-                    <div className="text-2xl font-bolder leading-tight text-indigo-700 px-2 mt-4">
-                        My offers
-                    </div>
                     <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                         <div
                             className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
@@ -56,7 +68,7 @@ const OfferHistory = () => {
                                     <th className="px-6 py-3 text-center font-medium">
                                         Amount
                                     </th>
-                                    <th className="px-6 py-3 text-left font-medium">
+                                    <th className="px-6 py-3 text-center font-medium">
                                         Created Date
                                     </th>
                                     <th className="px-6 py-3 text-center font-medium">
@@ -86,22 +98,22 @@ const OfferHistory = () => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-center">
                                             <span
-                                                className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${offer.status === 'pending' ? 'bg-green-200 text-green-600' : offer.status === 'created' ? 'bg-blue-200 text-blue-600' : 'bg-red-200 text-red-600'}`}>
+                                                className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${offer.status === 'pending' ? 'bg-green-200 text-green-600' : offer.status === 'created' ? 'bg-blue-200 text-blue-600' : offer.status === 'contingent' ? 'bg-gray-300 text-gray-800' : 'bg-red-200 text-red-600'}`}>
                                                 {offer.status}
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-center">
                                             <div className="flex items-center justify-end text-green-600">
-                                                <a href="#"
+                                                <button onClick={(e) => cancelOffer(e, offer)}
                                                    className={`mr-6 text-red-600 hover:text-red-900 focus:outline-none focus:underline flex items-center ${offer.status === 'created' ? "" : "hidden"}`}>
                                                     <span className={"mx-2 text-red-800"}>Cancel </span>
                                                     <i className="material-icons mr-1 text-red-800">block</i>
-                                                </a>
-                                                <a href="#"
+                                                </button>
+                                                <button onClick={(e) => acceptOffer(e, offer)}
                                                    className={`mr-6 text-blue-600 hover:text-blue-900 focus:outline-none focus:underline flex items-center ${offer.status === 'pending' ? "" : "hidden"}`}>
                                                     <span className={"mx-2 text-blue-800"}>Accept </span>
                                                     <i className="material-icons mr-1 text-blue-800">task_alt</i>
-                                                </a>
+                                                </button>
                                                 <a href="#"
                                                    className="text-green-600 hover:text-green-900 focus:outline-none focus:underline flex items-center">
                                                     <span className={"mx-2 text-green-800"}>Go to Property </span>

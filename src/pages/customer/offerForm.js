@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import {useParams, useNavigate, Link} from 'react-router-dom';
 import {UserService} from "../../service/userservice";
 import axios from "axios";
 
@@ -19,7 +19,6 @@ function OfferForm() {
             userId,
             propertyId
         };
-
         console.log(formData)
 
         try {
@@ -30,12 +29,9 @@ function OfferForm() {
                 },
                 body: JSON.stringify(formData)
             });
-
             if (!response.ok) {
                 throw new Error('Failed to submit offer');
             }
-
-
             console.log('Offer submitted successfully');
             navigate("/customer/offers-history");
         } catch (error) {
@@ -44,9 +40,9 @@ function OfferForm() {
     };
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-lg-6">
+        <div className="px-6 pt-5">
+            <div className="row">
+                <div className="col-lg-4">
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label htmlFor="amount" className="form-label">Amount</label>
@@ -72,7 +68,15 @@ function OfferForm() {
                                 required
                             ></textarea>
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit Offer</button>
+                        <div className={"flex justify-content-between"}>
+                            <button type="submit"
+                                    className="flex items-center bg-indigo-600 text-white font-montserrat py-1 px-3 font-medium rounded-full hover:bg-indigo-500 transition-all duration-300">
+                                Submit Offer
+                            </button>
+                            <Link
+                                className="flex items-center bg-orange-500 text-white font-montserrat py-1 px-3 font-medium rounded-full hover:bg-orange-400 transition-all duration-300"
+                                to={"/customer/properties"}>Back</Link>
+                        </div>
                     </form>
                 </div>
             </div>
