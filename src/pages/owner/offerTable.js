@@ -169,8 +169,8 @@ const OfferTable = ({ action, onDataRefresh }) => {
                                     </td>
 
 
-                            </tr>
-                        )}
+                                </tr>
+                            }) : ""}
                         </tbody>
                     </table>
                 </div>
