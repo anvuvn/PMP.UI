@@ -1,18 +1,7 @@
 import { Table } from "react-bootstrap"
-import { useNavigate } from "react-router";
 import Button from 'react-bootstrap/Button';
 
 const PropertyTable = ({ data, action }) => {
-
-    const navigate=useNavigate();
-
-
-
-    const viewOfferHandleChange=(id)=>{
-
-        console.log("idddd:",id);
-        navigate('/owner/'+id+'/offerlist');
-    }
 
     return <>
 
@@ -43,10 +32,6 @@ const PropertyTable = ({ data, action }) => {
                                     {action(d)}
                                 </td>
                                 : ""}
-
-                       <td>
-                            <Button variant="outline-dark btn-sm" style={{marginRight:10}} onClick={()=>viewOfferHandleChange(d.id)}>View offers</Button>
-                       </td>         
 
                     </tr>
                 }) : "No recent property added"}
