@@ -11,6 +11,9 @@ export const AdminService = {
         let result = await API.post(`/admin/owners/${id}/approval`,{});
         return result.data;
     },
-
+    getOffersHistory: async function(){
+        let result = await API.get("/admin/offers/history");
+        return result.data;
+    }
 
 }

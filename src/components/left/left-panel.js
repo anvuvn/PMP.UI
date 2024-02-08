@@ -22,18 +22,24 @@ const LeftPanel = () => {
     const getAddminLink = () => {
         return <>
             <li className="nav-item hover:bg-indigo-200">
-                <Link class="nav-link text-black " to="/admin/dashboard">
+                <Link className="nav-link text-black " to="/admin/dashboard">
                     <i className={"material-icons"}>dashboard</i>
                     <span className="nav-link-text ms-1">Dashboard</span>
                 </Link>
             </li>
-            <li class="nav-item hover:bg-indigo-200">
+            <li className="nav-item hover:bg-indigo-200">
                 <Link className="nav-link text-black " to="/admin/properties">
                     <i className={"material-icons"}>apartment</i>
                     <span className="nav-link-text ms-1">Properties</span>
                 </Link>
             </li>
-            <li class="nav-item hover:bg-indigo-200">
+            <li className="nav-item hover:bg-indigo-200">
+                <Link className="nav-link text-black " to="/admin/offers-history">
+                    <i className={"material-icons"}>schedule</i>
+                    <span className="nav-link-text ms-1">Offers History</span>
+                </Link>
+            </li>
+            <li className="nav-item hover:bg-indigo-200">
                 <Link className="nav-link text-black " to="/admin/users">
                     <i className={"material-icons"}>group</i>
                     <span className="nav-link-text ms-1">Users</span>
@@ -44,7 +50,7 @@ const LeftPanel = () => {
     const getOwnerLink = () => {
         return <>
             <li className="nav-item hover:bg-indigo-200">
-                <Link class="nav-link text-black " to="/owner/properties">
+                <Link className="nav-link text-black " to="/owner/properties">
                     <i className={"material-icons"}>apartment</i>
                     <span className="nav-link-text ms-1">My Properties</span>
                 </Link>

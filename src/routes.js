@@ -22,6 +22,7 @@ import Example from './pages/customer/example';
 import OfferHistory from './pages/customer/offersHistory';
 import Panorama from './pages/customer/panorama';
 import PropertyDetails from './components/property/property-details';
+import OffersHistoryAdmin from "./pages/admin/offersHistory";
 
 const PageRoutes = () => {
   return (
@@ -50,6 +51,10 @@ const PageRoutes = () => {
           path="dashboard"
           element={<AdminDashBoard></AdminDashBoard>}
         ></Route>
+          <Route
+              path="offers-history"
+              element={<OffersHistoryAdmin></OffersHistoryAdmin>}
+          ></Route>
         <Route
           path="properties"
           element={<AdminProperties></AdminProperties>}
