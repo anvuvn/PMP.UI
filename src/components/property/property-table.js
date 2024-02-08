@@ -1,6 +1,8 @@
 import { Table } from "react-bootstrap"
+import Button from 'react-bootstrap/Button';
 
 const PropertyTable = ({ data, action }) => {
+
     return <>
 
         <Table className="table align-items-center justify-content-center mb-0">
