@@ -1,6 +1,7 @@
 export const PropertyStatus = {
-    Waiting: "Waiting",
-    Available: "Available",
-    Contingent: "Contingent",
-    Sold: "Sold"
-}
+  Available: 'Available',
+  Contingent: 'Contingent',
+  Sold: 'Sold',
+  Waiting: 'Waiting',
+  Deleted: 'Deleted'
+};

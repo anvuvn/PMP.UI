@@ -1,7 +1,13 @@
-const DefaultLandingPage = () => {
-    return <>
-        <h1>Landing Page</h1>
-    </>
-}
 
-export default DefaultLandingPage
+import PropertyGrid from '../../components/property/property-grid';
+
+const DefaultLandingPage = () => {
+  return (
+    <> 
+      <PropertyGrid></PropertyGrid>
+
+    </>
+  );
+};
+
+export default DefaultLandingPage;
