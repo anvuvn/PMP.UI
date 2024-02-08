@@ -17,14 +17,12 @@ API.interceptors.request.use(function (config) {
   }
   return config;
 }, function (error) {
-  // Do something with request error
   return Promise.reject(error);
 });
 
 API.interceptors.response.use(
   response => response,
   error => {
-    //window.location.href = '/403';
     alert("Permission dennied!!")
   });
 export default API;
