@@ -64,9 +64,7 @@ const OfferHistory = () => {
                             <table className="min-w-full">
                                 <thead>
                                 <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
-                                    <th className="px-6 py-3 text-center font-medium">
-                                        Property Status
-                                    </th>
+                                  
                                     <th className="px-6 py-3 text-center font-medium">
                                         Amount
                                     </th>
@@ -84,12 +82,7 @@ const OfferHistory = () => {
                                 <tbody className="bg-white">
                                 {offers.map((offer, index) => (
                                     <tr key={index}>
-                                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-center">
-                                            <div
-                                                className={`text-sm leading-5 rounded-full py-2 ${offer.propertyStatus === 'Pending' ? 'bg-orange-200 text-orange-600' : offer.propertyStatus === 'Available' ? 'bg-green-200 text-green-600' : 'bg-red-200 text-red-600'}`}>
-                                                {offer.propertyStatus}
-                                            </div>
-                                        </td>
+                                       
                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                             <div className="text-sm leading-5 text-gray-900 text-center">
                                                 $ {offer.amount}
