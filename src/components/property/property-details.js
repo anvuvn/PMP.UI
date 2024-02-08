@@ -67,50 +67,61 @@ const PropertyDetails = (props) => {
   };
 
   return (
-    <div className="col-xs-1" align="center">
-      <div className="w-80">
-        {property && (
-          <Pannellum
-            height="640px"
-            image={extract_image(image3d.image)}
-            autoLoad
-            autoRotate={-2}
-            orientationOnByDefault={false}
-            compass
-            draggable
-            keyboardZoom
-            mouseZoom
-            preview=""
-            previewAuthor=""
-            previewTitle=""
-            showControls
-            showFullscreenCtrl={true}
-            showZoomCtrl
-            hotspotDebug={false}
-          />
-        )}
+    <>
+      <div className="text-1xl font-bolder leading-tight text-indigo-700 px-2" style={{ margin: 30 }}>
+        <Link to="/customer/properties">Back to properties</Link>
+        <span className={"text-gray-500 mx-4"}> / </span>
+        Property detail
       </div>
-      <div style={{ marginTop: '20px', marginBottom: '20px' }}>
-        <PropertyDescription property={property} />
+      <div className="col-xs-1" align="center">
+
+
+
+        <div className="w-80">
+          {property && (
+            <Pannellum
+              height="640px"
+              image={extract_image(image3d.image)}
+              autoLoad
+              autoRotate={-2}
+              orientationOnByDefault={false}
+              compass
+              draggable
+              keyboardZoom
+              mouseZoom
+              preview=""
+              previewAuthor=""
+              previewTitle=""
+              showControls
+              showFullscreenCtrl={true}
+              showZoomCtrl
+              hotspotDebug={false}
+            />
+          )}
+        </div>
+        <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+          <PropertyDescription property={property} />
+        </div>
+        <div className="mt-4 w-80">
+          <Carousel>
+            {images &&
+              images.map((image, index) => {
+                return (
+                  <Carousel.Item key={index}>
+                    <img
+                      max-width="80%"
+                      className="d-block w-100"
+                      src={`data:image/png;base64,${image.image}`}
+                      alt="First slide"
+                    />
+                  </Carousel.Item>
+                );
+              })}
+          </Carousel>
+        </div>
       </div>
-      <div className="mt-4 w-80">
-        <Carousel>
-          {images &&
-            images.map((image, index) => {
-              return (
-                <Carousel.Item key={index}>
-                  <img
-                    max-width="80%"
-                    className="d-block w-100"
-                    src={`data:image/png;base64,${image.image}`}
-                    alt="First slide"
-                  />
-                </Carousel.Item>
-              );
-            })}
-        </Carousel>
-      </div>
-    </div>
+    </>
+
   );
 };
 
