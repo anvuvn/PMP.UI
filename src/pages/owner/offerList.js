@@ -11,35 +11,10 @@ import { useParams } from 'react-router';
 import OfferTable from './offerTable';
 const Offerlist = (props) => {
 
-    const {id} = useParams();
-   
-    const [offers, setOffers] = useState([]);
-
-    const fetchOffersByPropertyID=(pid)=>{
-       console.log("fetchOffersByPropertyID"+pid)
-
-       // alert("Inside::"+pid);
-       OwnerService.getOfferByProperty(pid).then(
-           response=>{
-               setOffers(response);
-           }
-       ).catch(err=>console.log(err.message));
-
-    }
-
-    console.log("offersList:",offers);
-
-    useEffect(()=>{
-        
-        console.log("passs property ID:",id);
-
-        fetchOffersByPropertyID(id);
-
-     },[id]);
     
     return (
         <div>
-            <OfferTable allowEdit={true} data={offers}></OfferTable>
+            <OfferTable ></OfferTable>
         </div>
     )
 }

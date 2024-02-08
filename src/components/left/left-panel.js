@@ -44,12 +44,6 @@ const LeftPanel = () => {
     const getOwnerLink = () => {
         return <>
             <li className="nav-item hover:bg-indigo-200">
-                <Link className="nav-link text-black " to="/owner/offerlist">
-                    <i className={"material-icons"}>money</i>
-                    <span className="nav-link-text ms-1">Offer List</span>
-                </Link>
-            </li>
-            <li className="nav-item hover:bg-indigo-200">
                 <Link class="nav-link text-black " to="/owner/properties">
                     <i className={"material-icons"}>apartment</i>
                     <span className="nav-link-text ms-1">My Properties</span>
