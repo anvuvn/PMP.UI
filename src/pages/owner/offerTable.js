@@ -141,7 +141,11 @@ const OfferTable = ({ data, action }) => {
 
 
                             </tr>
-                        }):""}
+                        }):(
+                            <tr>
+                                <td>No Offers!</td>
+                            </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>
