@@ -1,17 +1,36 @@
 import { Modal } from "react-bootstrap"
 import SendMessage from "./send-message"
+import { useEffect, useState } from "react"
 
-const MessageDialog = ({ receiver, show, onClose }) => {
+const MessageDialog = ({ receiver, show, onClose, onShow, title }) => {
+    const [showDialog, setShowDialog] = useState(show || false)
+    useEffect(() => {
+        setShowDialog(show);
+    }, [show])
+    useEffect(() => {
+        if (showDialog) {
+            if (typeof onShow === "function")
+                onShow();
+        }
+    }, [showDialog])
     const handleClose = () => {
-        onClose()
+        setShowDialog(false)
+        if (typeof onClose === "function")
+            onClose()
     }
-    return <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-            <Modal.Title>Sending message to: {receiver.name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body><SendMessage onMessageSent={handleClose} receiver={receiver}></SendMessage>
-        </Modal.Body>
-    </Modal>
+    const showMessageBox = (e) => {
+        setShowDialog(true)
+    }
+    return <>
+        <button onClick={(e) => showMessageBox(e)}>{title}</button>
+        <Modal show={showDialog} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Sending message to: {receiver.name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body><SendMessage onMessageSent={handleClose} receiver={receiver}></SendMessage>
+            </Modal.Body>
+        </Modal>
+    </>
 }
 
 export default MessageDialog

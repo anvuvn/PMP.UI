@@ -9,7 +9,7 @@ import { PropertyStatus } from '../../constant/PropertyStatus';
 const AdminProperties = () => {
   const [properties, setProperties] = useState([]);
   const [receiver, setReceiver] = useState({});
-  const [showMessage, setShowMessage] = useState(false);
+  // const [showMessage, setShowMessage] = useState(false);
   const getProppertiesByStatus = () => {
     PropertyService.getPropertyByStatus().then((res) => {
       setProperties(res);
@@ -25,49 +25,50 @@ const AdminProperties = () => {
       });
     }
   };
-  const sendMessage = (e, property) => {
-    e.preventDefault();
-    setReceiver({ id: property.ownerId, name: property.ownerName });
-    showDialog();
-  };
-  const handleClose = () => setShowMessage(false);
-  const showDialog = () => setShowMessage(true);
+  // const sendMessage = (e, property) => {
+  //   e.preventDefault();
+  //   setReceiver({ id: property.ownerId, name: property.ownerName });
+  //   showDialog();
+  // };
+
   const getAction = (sender) => {
     let property = sender;
     return (
       <div className={"flex items-center justify-center"}>
         <a
-            className="text-green-600 hover:text-green-900 focus:outline-none focus:underline flex items-center mr-4"
-            href="#"
-            onClick={(e) => sendMessage(e, sender)}
+          className="text-green-600 hover:text-green-900 focus:outline-none focus:underline flex items-center mr-4"
+          href="#"
+          onClick={(e) => e.preventDefault()}
         >
-          <span className={"mx-2 text-green-800"}>Send message </span>
-          <i className="material-icons mr-1 text-green-800">send</i>
+          <MessageDialog
+            title={"Send message"}
+            receiver={receiver}
+          ></MessageDialog>
         </a>
         {property.status === PropertyStatus.Waiting ? (
-            <a
-                className="text-green-600 hover:text-green-900 focus:outline-none focus:underline flex items-center"
-                href="#"
-                onClick={(e) => approveProperty(e, sender)}
-            >
-              <span className={"mx-2 text-blue-800"}>Approve </span>
-              <i className="material-icons mr-1 text-blue-800">task_alt</i>
-            </a>
+          <a
+            className="text-green-600 hover:text-green-900 focus:outline-none focus:underline flex items-center"
+            href="#"
+            onClick={(e) => approveProperty(e, sender)}
+          >
+            <span className={"mx-2 text-blue-800"}>Approve </span>
+            <i className="material-icons mr-1 text-blue-800">task_alt</i>
+          </a>
         ) : (
-            ''
+          ''
         )}
       </div>
     );
   };
-  const getDialog = () => {
-    return (
-        <MessageDialog
-            show={showMessage}
-        onClose={handleClose}
-        receiver={receiver}
-      ></MessageDialog>
-    );
-  };
+  // const getDialog = () => {
+  //   return (
+  //     <MessageDialog
+  //       show={showMessage}
+  //       onClose={handleClose}
+  //       receiver={receiver}
+  //     ></MessageDialog>
+  //   );
+  // };
   useEffect(() => {
     getProppertiesByStatus();
   }, []);
@@ -82,7 +83,6 @@ const AdminProperties = () => {
       </div>
 
       <PropertyTable data={properties} action={getAction}></PropertyTable>
-      {getDialog()}
     </div>
   );
 };
