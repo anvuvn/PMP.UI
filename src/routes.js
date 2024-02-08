@@ -21,11 +21,13 @@ import EditProperty from "./components/property/edit-property"
 import Example from "./pages/customer/example"
 import OfferHistory from "./pages/customer/offersHistory";
 import Panorama from "./pages/customer/panorama";
+import PropertyDetails from "./components/property/property-details"
 
 const PageRoutes = () => {
     return <Routes>
         <Route path="/" element={<DefaultLandingPage></DefaultLandingPage>}></Route>
-        <Route path={"/properties/:propertyId"} element={<OfferForm/>}></Route>
+        <Route path={"/properties/:id"} element={<PropertyDetails/>}></Route>
+        <Route path={"/properties/:propertyId/offer"} element={<OfferForm/>}></Route>
         <Route path={"/properties/:propertyId/panorama"} element={<Panorama/>}></Route>
         <Route path="/authenticate" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
