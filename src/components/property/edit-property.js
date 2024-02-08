@@ -4,7 +4,7 @@ import { PROPERTY_TYPES } from '../../constant/PropertyType';
 import { Container, Dropdown, Form, Button } from 'react-bootstrap';
 
 import { PropertyService } from '../../service/property';
-import { Navigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const EditProperty = ()=>{
 
