@@ -22,8 +22,6 @@ const OfferTable = ({ action, onDataRefresh }) => {
 
     }
 
-    //console.log("offersList:", offers);
-
     useEffect(() => {
 
         fetchOffersByPropertyID(id);

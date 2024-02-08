@@ -26,16 +26,12 @@ function PropertyList() {
     };
 
     const handleSearch = (properties) => {
-            setProperties(properties);
+        setProperties(properties);
     };
 
     return (
         <Container fluid>
-            <Row>
-                <Col>
-                    <PropertyFilter onSearch={handleSearch} />
-                </Col>
-            </Row>
+            <PropertyFilter onSearch={handleSearch} />
             <Row className="justify-content-center">
                 {properties.map(property => (
                     <Col key={property.id} xs={12} sm={6} md={4} lg={3} className="mb-4 mt-6">
