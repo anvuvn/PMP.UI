@@ -7,7 +7,7 @@ const DefaultLandingPage = () => {
   return (
       <>
           <Hero/>
-          <PropertyGrid></PropertyGrid>
+          {/*<PropertyGrid></PropertyGrid>*/}
       </>
   );
 };

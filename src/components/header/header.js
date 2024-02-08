@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './header.scss'
-import { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { UserService } from '../../service/userservice'
 import { MessageService } from '../../service/messager-service'
@@ -61,7 +61,10 @@ const Header = () => {
             <div className={"container"}>
                 <div className={"flex justify-content-between items-center"}>
                     <Link to={"/"}><Logo></Logo></Link>
-                    <Link className={"text-right"} to="/authenticate">Sign in</Link>
+                    <Link className={"text-right flex items-center"} to="/authenticate">
+                        Sign in
+                        <i className="material-icons ml-2">login</i>
+                    </Link>
                 </div>
             </div>}
     </div>

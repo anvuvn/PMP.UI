@@ -23,7 +23,7 @@ const Hero = () => {
                 backgroundImage: "url('https://files.readme.io/d03acb0-Shperical_o_panoramic.png')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: 'calc(70vh - 2rem)', // Adjusted height to account for margin
+                height: 'calc(70vh)', // Adjusted height to account for margin
             }}
         >
             {/* Darkened overlay */}

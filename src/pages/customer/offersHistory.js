@@ -11,22 +11,42 @@ const OfferHistory = () => {
         })
     }, []);
 
-    return (
+    if(offers.length == 0) return (
         <div className="w-full h-screen">
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div className="flex flex-col">
-                    <div className="mt-6 mb-4 flex justify-content-between items-center">
-                        <div className="text-2xl font-bolder leading-tight text-indigo-700 px-2">
-                            My offers
-                        </div>
+                    <div className="mt-5 mb-4 flex justify-content-between items-center">
                         <div className="text-1xl font-bolder leading-tight text-indigo-700 px-2">
                             Customer
                             <span className={"text-gray-500 mx-4"}> / </span>
                             Offers History
                         </div>
                     </div>
+                    <div className="text-2xl font-bolder leading-tight text-indigo-700 px-2 mt-4">
+                        My offers list is empty
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+
+    return (
+        <div className="w-full h-screen">
+            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div className="flex flex-col">
+                    <div className="mt-5 mb-4 flex justify-content-between items-center">
+                        <div className="text-1xl font-bolder leading-tight text-indigo-700 px-2">
+                            Customer
+                            <span className={"text-gray-500 mx-4"}> / </span>
+                            Offers History
+                        </div>
+                    </div>
+                    <div className="text-2xl font-bolder leading-tight text-indigo-700 px-2 mt-4">
+                        My offers
+                    </div>
                     <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                        <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
+                        <div
+                            className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                             <table className="min-w-full">
                                 <thead>
                                 <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
