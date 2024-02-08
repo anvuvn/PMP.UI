@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import MessageDialog from '../../components/messages/message-dialog';
 import { OfferStatus } from '../../constant/OfferStatus';
 
-const OfferTable = ({ action, onDataRefresh }) => {
+const OfferTable = ({ action }) => {
 
     const { id } = useParams();
 
@@ -46,10 +46,7 @@ const OfferTable = ({ action, onDataRefresh }) => {
             setOffers(res);
         })
     }
-    const reloadData = () => {
-        if (typeof onDataRefresh === "function")
-            onDataRefresh();
-    }
+ 
     const acceptHandleChange = (d) => {
         const data = {
             offerId: d.id
@@ -60,7 +57,7 @@ const OfferTable = ({ action, onDataRefresh }) => {
             OwnerService.acceptOffer(d.id, data).then(response => {
                 console.log(response);
                 alert("Offer Accepted")
-                reloadData()
+                fetchOffersByPropertyID(id);
             }).catch(error => console.log(error.message));
         }
     };
@@ -78,7 +75,8 @@ const OfferTable = ({ action, onDataRefresh }) => {
                 .then(res => {
                     console.log(res);
                     alert("Offer cancelled")
-                    reloadData()
+                    //reloadData()
+                    fetchOffersByPropertyID(id);
                 }).catch(error => console.log(error.message));
 
         }

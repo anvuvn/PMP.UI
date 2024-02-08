@@ -42,7 +42,7 @@ const AdminProperties = () => {
         >
           <MessageDialog
             title={"Send message"}
-            receiver={receiver}
+            receiver={{id:property.ownerId, name:property.ownerName}}
           ></MessageDialog>
         </a>
         {property.status === PropertyStatus.Waiting ? (

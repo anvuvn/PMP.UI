@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CustomerService from "../../service/customer-service";
 import './customer.css';
 import { Link } from 'react-router-dom';
+import { OfferStatus } from '../../constant/OfferStatus';
 
 const OfferHistory = () => {
     const [offers, setOffers] = useState([]);
@@ -111,7 +112,7 @@ const OfferHistory = () => {
                                                     <i className="material-icons mr-1 text-red-800">block</i>
                                                 </button>
                                                 <button onClick={(e) => acceptOffer(e, offer)}
-                                                   className={`mr-6 text-blue-600 hover:text-blue-900 focus:outline-none focus:underline flex items-center ${offer.status === 'pending' ? "" : "hidden"}`}>
+                                                   className={`mr-6 text-blue-600 hover:text-blue-900 focus:outline-none focus:underline flex items-center ${offer.status === OfferStatus.OwnerAccepted ? "" : "hidden"}`}>
                                                     <span className={"mx-2 text-blue-800"}>Accept </span>
                                                     <i className="material-icons mr-1 text-blue-800">task_alt</i>
                                                 </button>
@@ -119,7 +120,7 @@ const OfferHistory = () => {
                                                    className="text-green-600 hover:text-green-900 focus:outline-none focus:underline flex items-center">
                                                     <span className={"mx-2 text-green-800"}>Go to Property </span>
                                                     <i className="material-icons mr-1 text-green-800">login</i>
-                                                </Link>
+                                                </Link>                                                
                                             </div>
                                         </td>
                                     </tr>
