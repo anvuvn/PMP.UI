@@ -26,7 +26,7 @@ const PropertyFilter = ({ onSearch }) => {
 
     }
     useEffect(() => {
-
+        applySearch();
     }, [])
     return <>
         <div className={"col-7 m-auto"}>

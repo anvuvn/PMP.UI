@@ -12,14 +12,14 @@ function PropertyList() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchProperties("Available");
+        // fetchProperties("Available");
     }, []);
 
-    const fetchProperties = (status) => {
-        CustomerService.getPropertiesList(status).then(res => {
-            setProperties(res);
-        });
-    };
+    // const fetchProperties = (status) => {
+    //     CustomerService.getPropertiesList(status).then(res => {
+    //         setProperties(res);
+    //     });
+    // };
 
     const handleMakeOffer = (propertyId) => {
         navigate(`/customer/properties/${propertyId}/offer`);
