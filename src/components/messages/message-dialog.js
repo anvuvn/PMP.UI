@@ -22,7 +22,7 @@ const MessageDialog = ({ receiver, show, onClose, onShow, title }) => {
         setShowDialog(true)
     }
     return <>
-        <button onClick={(e) => showMessageBox(e)}>{title}</button>
+        <div onClick={(e) => showMessageBox(e)}>{title}</div>
         <Modal show={showDialog} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Sending message to: {receiver.name}</Modal.Title>
