@@ -8,7 +8,7 @@ export const FavouriteService = {
         return result.data;
     },
     addToMyFavourite: async function (data) {
-        let result = await API.post("/favourites",data);
+        let result = await API.post("/favourites",data, {headers: { "Content-Type": "application/json"}});
         return result.data;
     },
     removeFavourite: async function (id) {

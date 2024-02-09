@@ -125,8 +125,7 @@ const OfferHistory = () => {
                 </div>
             </div>
         </div>
-    )
-        ;
+    );
 };
 
 export default OfferHistory;

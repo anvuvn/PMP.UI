@@ -67,6 +67,14 @@ const LeftPanel = () => {
                     </span>
                 </Link>
             </li>
+            <li className="nav-item hover:bg-indigo-200">
+                <Link className="nav-link text-black " to="/customer/favourites">
+                    <i className={"material-icons"}>favorite</i>
+                    <span className="nav-link-text ms-1">
+                        Favorites
+                    </span>
+                </Link>
+            </li>
             <li className={"nav-item hover:bg-indigo-200"}>
                 <Link className="nav-link text-black " to="/customer/offers-history">
                     <i className={"material-icons"}>money</i>
@@ -80,10 +88,12 @@ const LeftPanel = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(UserService.isAuthenticated());
 
-    if(!isLoggedIn){
+    if (!isLoggedIn) {
         return "";
     }
-    return <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 custom-nav bg-indigo-100" id="sidenav-main">
+    return <aside
+        className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 custom-nav bg-indigo-100"
+        id="sidenav-main">
 
         <div className="sidenav-header">
             <Link to={"/"} className="navbar-brand m-0" target="_blank">

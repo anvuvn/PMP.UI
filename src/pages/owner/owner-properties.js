@@ -4,6 +4,7 @@ import PropertyTable from "../../components/property/property-table"
 import React, { useEffect, useState } from "react";
 import { PropertyService } from "../../service/property";
 import { PropertyStatus } from "../../constant/PropertyStatus";
+import {toast, ToastContainer} from "react-toastify";
 
 const OwnerProperty = () => {
     const [properties, setProperties] = useState([]);
@@ -21,6 +22,16 @@ const OwnerProperty = () => {
     const deleteProps = (id) => {
         PropertyService.changePropertyStatus(id, PropertyStatus.Deleted).then(
             res => {
+                toast('🦄 Successfully deleted!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 fetchProperties();
             }
         );
@@ -61,6 +72,7 @@ const OwnerProperty = () => {
         <div class="px-4">
             <PropertyTable allowEdit={true} data={properties} action={getAction}></PropertyTable>
         </div>
+        <ToastContainer/>
     </>
 }
 

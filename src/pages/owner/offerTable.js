@@ -5,6 +5,9 @@ import OwnerService from "../../service/owner-service";
 import { Link, useParams } from "react-router-dom";
 import MessageDialog from '../../components/messages/message-dialog';
 import { OfferStatus } from '../../constant/OfferStatus';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const OfferTable = ({ action }) => {
 
@@ -181,6 +184,7 @@ const OfferTable = ({ action }) => {
                     </table>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

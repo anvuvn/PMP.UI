@@ -72,6 +72,7 @@ const PageRoutes = () => {
         ></Route>
         <Route path="example" element={<Example />}></Route>
         <Route path={'offers-history'} element={<OfferHistory />}></Route>
+          <Route path={"favourites"} element={<Favourite/>}></Route>
       </Route>
 
       <Route path="/owner" element={<OwnerLandingPage></OwnerLandingPage>}>
