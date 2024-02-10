@@ -17,7 +17,10 @@ export const OwnerService = {
     cancelOffer:async function(offerId,data){
        let result = await API.post(`/offers/owner/${offerId}/cancel`,data);
        return result.data;
-    },
+    },acceptOfferAfterCustomer:async function(offerId,data){
+      let result = await API.post(`/offers/owner/${offerId}/accept-after-customer`,data);
+      return result.data;
+   } ,
 
 }
 

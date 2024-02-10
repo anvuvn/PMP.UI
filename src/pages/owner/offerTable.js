@@ -15,6 +15,8 @@ const OfferTable = ({ action }) => {
 
     const [offers, setOffers] = useState([]);
 
+    const [completeStatus,setCompleteStatus]=useState(true);
+
     const fetchOffersByPropertyID = (pid) => {
 
         OwnerService.getOfferByProperty(pid).then(
@@ -56,13 +58,31 @@ const OfferTable = ({ action }) => {
         }
 
         let result = window.confirm('Are you sure you want to Approve?');
-        if (result) {
-            OwnerService.acceptOffer(d.id, data).then(response => {
-                console.log(response);
-                alert("Offer Accepted")
-                fetchOffersByPropertyID(id);
-            }).catch(error => console.log(error.message));
+        if((d.status!="contingent")){
+          
+            if (result) {
+                OwnerService.acceptOffer(d.id, data).then(response => {
+                    console.log(response);
+                    alert("Offer Accepted");
+                    fetchOffersByPropertyID(id);
+                }).catch(error => console.log(error.message));
+            }
+
+            setCompleteStatus(true);
+        }else{
+           
+            if (result) {
+                OwnerService.acceptOfferAfterCustomer(d.id, data).then(response => {
+                    console.log(response);
+                    alert("Offer Completed");
+                    fetchOffersByPropertyID(id);
+                }).catch(error => console.log(error.message));
+            }
+
+            setCompleteStatus(false);
         }
+      
+      
     };
 
     const declineHandleChange = (d) => {
@@ -74,13 +94,18 @@ const OfferTable = ({ action }) => {
 
         if (result) {
 
-            OwnerService.cancelOffer(d.id, data)
+            if(d.status!="completed"){
+                OwnerService.cancelOffer(d.id, data)
                 .then(res => {
                     console.log(res);
                     alert("Offer cancelled")
-                    //reloadData()
                     fetchOffersByPropertyID(id);
                 }).catch(error => console.log(error.message));
+
+                setCompleteStatus(true);
+            }else{
+                setCompleteStatus(false);
+            }
 
         }
     }
@@ -122,6 +147,7 @@ const OfferTable = ({ action }) => {
                                 <Dropdown.Item key={OfferStatus.CustomerAccepted} eventKey={OfferStatus.CustomerAccepted}>Customer Accepted</Dropdown.Item>
                                 <Dropdown.Item key={OfferStatus.cancelled} eventKey={OfferStatus.cancelled}>cancelled</Dropdown.Item>
                                 <Dropdown.Item key={OfferStatus.rejected} eventKey={OfferStatus.rejected}>rejected</Dropdown.Item>
+                                <Dropdown.Item key={OfferStatus.completed} eventKey={OfferStatus.completed}>completed</Dropdown.Item>
 
                             </Dropdown.Menu>
                         </Dropdown>
@@ -159,10 +185,10 @@ const OfferTable = ({ action }) => {
                                     <td>
                                         <tr>
                                             <td>
-                                                <Button variant="outline-success" style={{ marginRight: 10 }} onClick={() => acceptHandleChange(d)}>Accept</Button>{' '}
+                                                <Button variant="outline-success" style={{ marginRight: 10 ,display:completeStatus ? 'block' : 'none' }} onClick={() => acceptHandleChange(d)}>Accept</Button>{' '}
                                             </td>
                                             <td>
-                                                <Button variant="outline-danger" onClick={() => declineHandleChange(d)}>Decline</Button>{' '}
+                                                <Button variant="outline-danger" style={{display:completeStatus ? 'block' : 'none'}} onClick={() => declineHandleChange(d)}>Decline</Button>{' '}
                                             </td>
                                             <td>
                                                 <MessageDialog title={getMessageIcon()} receiver={{ id: d.customer_id, name: d.name }}></MessageDialog>
